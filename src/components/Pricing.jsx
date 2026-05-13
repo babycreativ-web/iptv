@@ -1,17 +1,13 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Check, Zap, ShoppingCart } from 'lucide-react';
+import { Check, ShoppingCart } from 'lucide-react';
 
 const Pricing = () => {
-  const { t } = useTranslation();
-
   const plans = [
-    { duration: 1, label: '1 MOIS', price: 11, popular: false },
-    { duration: 3, label: '3 MOIS', price: 21, popular: false },
-    { duration: 6, label: '6 MOIS', price: 31, popular: false },
-    { duration: 12, label: '12 MOIS', price: 51, popular: true },
-    { duration: 24, label: '24 MOIS', price: 81, popular: false },
+    { duration: '1 MOIS', price: 11, popular: false },
+    { duration: '3 MOIS', price: 21, popular: false },
+    { duration: '6 MOIS', price: 31, popular: false },
+    { duration: '12 MOIS', price: 51, popular: true },
+    { duration: '24 MOIS', price: 81, popular: false },
   ];
 
   const features = [
@@ -21,39 +17,33 @@ const Pricing = () => {
     "Assistance 24/7",
     "Mise à jour gratuite",
     "Anti-Freeze Technologie",
-    "Compatible Smart TV, Android, MAG...",
+    "Compatible Tous Appareils",
   ];
 
   return (
-    <section id="pricing" style={{ padding: '100px 0', background: '#080917' }}>
+    <section id="pricing" style={{ padding: '100px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <h2 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '20px' }}>NOS ABONNEMENTS <span style={{ color: 'var(--primary)' }}>PREMIUM</span></h2>
-          <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto' }}>
-            Choisissez le plan qui vous convient et profitez de la meilleure expérience IPTV en France et à l'international.
-          </p>
+          <h2 style={{ fontSize: '3rem', fontWeight: '900' }}>NOS <span style={{ color: 'var(--secondary)' }}>OFFRES</span> D'ABONNEMENT</h2>
         </div>
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
-          gap: '20px',
-          alignItems: 'flex-start'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', 
+          gap: '20px' 
         }}>
           {plans.map((plan, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ y: -10 }}
+            <div 
+              key={idx} 
+              className={plan.popular ? 'pricing-card-premium' : ''}
               style={{
-                background: plan.popular 
-                  ? 'linear-gradient(180deg, #6a11cb 0%, #2575fc 100%)' 
-                  : 'var(--bg-card)',
-                padding: '40px 25px',
-                borderRadius: '24px',
+                background: plan.popular ? '' : 'var(--card-bg)',
+                padding: '50px 25px',
+                borderRadius: '30px',
                 textAlign: 'center',
-                border: '1px solid rgba(255,255,255,0.05)',
                 position: 'relative',
-                boxShadow: plan.popular ? '0 20px 40px rgba(106, 17, 203, 0.3)' : 'none'
+                transition: '0.3s',
+                border: '1px solid rgba(255,255,255,0.05)'
               }}
             >
               {plan.popular && (
@@ -62,65 +52,46 @@ const Pricing = () => {
                   top: '-15px',
                   left: '50%',
                   transform: 'translateX(-50%)',
-                  background: 'var(--secondary)',
+                  background: 'var(--primary)',
                   color: '#000',
-                  padding: '5px 20px',
+                  padding: '5px 25px',
                   borderRadius: '50px',
-                  fontSize: '12px',
-                  fontWeight: '900',
-                  textTransform: 'uppercase'
-                }}>
-                  Meilleur Choix
-                </div>
+                  fontSize: '11px',
+                  fontWeight: '900'
+                }}>BEST SELLER</div>
               )}
 
-              <h3 style={{ fontSize: '24px', fontWeight: '800', marginBottom: '20px' }}>{plan.label}</h3>
-              
-              <div style={{ marginBottom: '30px' }}>
-                <span style={{ fontSize: '48px', fontWeight: '900' }}>{plan.price}€</span>
-                <div style={{ fontSize: '14px', color: plan.popular ? 'rgba(255,255,255,0.7)' : 'var(--text-muted)' }}>
-                  Paiement unique
-                </div>
+              <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '25px' }}>{plan.duration}</h3>
+              <div style={{ marginBottom: '35px' }}>
+                <span style={{ fontSize: '50px', fontWeight: '900' }}>{plan.price}€</span>
               </div>
 
-              <div style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                gap: '12px', 
-                marginBottom: '40px',
-                textAlign: 'left',
-                fontSize: '13px'
-              }}>
-                {features.map((feat, i) => (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '45px', textAlign: 'left', fontSize: '13px' }}>
+                {features.map((f, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Check size={14} color={plan.popular ? '#fff' : 'var(--primary)'} strokeWidth={3} />
-                    <span>{feat}</span>
+                    <Check size={14} color={plan.popular ? '#fff' : 'var(--secondary)'} />
+                    <span>{f}</span>
                   </div>
                 ))}
               </div>
 
-              <a
-                href={`https://wa.me/212688407392?text=Bonjour, je souhaite commander le pack ${plan.label} à ${plan.price}€.`}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  width: '100%',
-                  padding: '16px',
-                  borderRadius: '15px',
-                  background: plan.popular ? '#fff' : 'var(--primary)',
-                  color: plan.popular ? 'var(--primary)' : '#fff',
-                  fontWeight: '800',
-                  fontSize: '14px',
-                  textTransform: 'uppercase',
-                  transition: '0.3s'
-                }}
-              >
+              <a href="https://wa.me/212688407392" style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                width: '100%',
+                padding: '18px',
+                borderRadius: '50px',
+                background: plan.popular ? '#fff' : 'var(--secondary)',
+                color: plan.popular ? 'var(--secondary)' : '#fff',
+                fontWeight: '900',
+                fontSize: '13px'
+              }}>
                 <ShoppingCart size={18} />
                 COMMANDER
               </a>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

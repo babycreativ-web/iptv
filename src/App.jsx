@@ -1,41 +1,20 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useParams, useNavigate, Navigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import VODShowcase from './components/VODShowcase';
+import FeaturesMarquee from './components/FeaturesMarquee';
 import Pricing from './components/Pricing';
-import Features from './components/Features';
-import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import './i18n';
 
-const MainLayout = () => {
-  const { lang } = useParams();
-  const { i18n } = useTranslation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const supportedLangs = ['en', 'fr', 'es'];
-    if (lang && supportedLangs.includes(lang)) {
-      i18n.changeLanguage(lang);
-    } else {
-      navigate('/en', { replace: true });
-    }
-  }, [lang, i18n, navigate]);
-
+function App() {
   return (
     <div className="app">
       <Navbar />
-      <main>
-        <Hero />
-        <VODShowcase />
-        <Features />
-        <Pricing />
-        <FAQ />
-      </main>
+      <Hero />
+      <FeaturesMarquee />
+      <Pricing />
       <Footer />
       
+      {/* Floating WhatsApp fixed at 100% clone position */}
       <a 
         href="https://wa.me/212688407392"
         target="_blank"
@@ -52,8 +31,7 @@ const MainLayout = () => {
           alignItems: 'center',
           justifyContent: 'center',
           boxShadow: '0 10px 25px rgba(37, 211, 102, 0.4)',
-          zIndex: 100,
-          transition: '0.3s'
+          zIndex: 2000
         }}
       >
         <svg width="34" height="34" viewBox="0 0 24 24" fill="white">
@@ -61,17 +39,6 @@ const MainLayout = () => {
         </svg>
       </a>
     </div>
-  );
-};
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/:lang" element={<MainLayout />} />
-        <Route path="*" element={<Navigate to="/en" replace />} />
-      </Routes>
-    </BrowserRouter>
   );
 }
 
