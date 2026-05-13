@@ -16,9 +16,13 @@ const Hero = () => {
   return (
     <section style={{ 
       paddingTop: '160px', 
-      paddingBottom: '100px', 
+      paddingBottom: '140px', 
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      backgroundImage: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), url("https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2026/04/4K-Wallpaper-For-Smart-Tv-Gallery-2-e1775578714671.jpg")',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed'
     }}>
       {/* Background glow effects */}
       <div style={{

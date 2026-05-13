@@ -50,21 +50,10 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 style={{ marginBottom: '24px' }}>Payment Methods</h4>
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              {/* Using stylized blocks for payment icons if assets aren't available */}
-              <div style={{ background: 'white', padding: '4px 8px', borderRadius: '4px', height: '24px', display: 'flex', alignItems: 'center' }}>
-                <span style={{ color: '#003087', fontWeight: 'bold', fontSize: '10px' }}>PayPal</span>
-              </div>
-              <div style={{ background: 'white', padding: '4px 8px', borderRadius: '4px', height: '24px', display: 'flex', alignItems: 'center' }}>
-                <span style={{ color: '#eb001b', fontWeight: 'bold', fontSize: '10px' }}>Mastercard</span>
-              </div>
-              <div style={{ background: 'white', padding: '4px 8px', borderRadius: '4px', height: '24px', display: 'flex', alignItems: 'center' }}>
-                <span style={{ color: '#1a1f71', fontWeight: 'bold', fontSize: '10px' }}>VISA</span>
-              </div>
-              <div style={{ background: 'white', padding: '4px 8px', borderRadius: '4px', height: '24px', display: 'flex', alignItems: 'center' }}>
-                <span style={{ color: '#f7931a', fontWeight: 'bold', fontSize: '10px' }}>Bitcoin</span>
-              </div>
+            <h4 style={{ marginBottom: '24px' }}>Trusted Service</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+              <img src="https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/06/Trustpilot-2048x340-1-768x128.png" alt="Trustpilot" style={{ width: '100%', maxWidth: '180px' }} />
+              <img src="https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/09/afe-checkout-badge.png-768x142.webp" alt="Safe Checkout" style={{ width: '100%', maxWidth: '200px' }} />
             </div>
           </div>
         </div>

@@ -3,7 +3,13 @@ import { motion } from 'framer-motion';
 
 const VODShowcase = () => {
   const brands = [
-    'Netflix', 'Disney+', 'HBO Max', 'Prime Video', 'Bein Sports', 'Sky Sports', 'Canal+', 'Hulu'
+    { name: 'Netflix', color: '#e50914' },
+    { name: 'Disney+', color: '#0063e5' },
+    { name: 'NBA', img: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/06/NBA.png' },
+    { name: 'Prime Video', color: '#00a8e1' },
+    { name: 'NFL', img: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/06/NFL.png' },
+    { name: 'HBO Max', color: '#7e10b2' },
+    { name: 'Sky Sports', color: '#00b0f0' },
   ];
 
   // Using a double array for seamless loop
@@ -26,22 +32,22 @@ const VODShowcase = () => {
               fontSize: '24px', 
               fontWeight: '900', 
               color: 'var(--text-muted)', 
-              opacity: 0.5,
+              opacity: 0.7,
               display: 'flex',
               alignItems: 'center',
-              gap: '10px'
+              gap: '15px'
             }}>
-              {/* Simplified brand representations */}
-              <span style={{ 
-                background: brand === 'Netflix' ? '#e50914' : 
-                            brand === 'Disney+' ? '#0063e5' : 
-                            brand === 'Prime Video' ? '#00a8e1' : 
-                            brand === 'Bein Sports' ? '#7e10b2' : 'transparent',
-                width: '12px',
-                height: '12px',
-                borderRadius: '50%'
-              }} />
-              {brand}
+              {brand.img ? (
+                <img src={brand.img} alt={brand.name} style={{ height: '40px', filter: 'grayscale(1) brightness(2)' }} />
+              ) : (
+                <span style={{ 
+                  background: brand.color,
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%'
+                }} />
+              )}
+              {brand.name}
             </div>
           ))}
         </motion.div>
