@@ -1,7 +1,9 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Features from './components/Features';
 import FeaturesMarquee from './components/FeaturesMarquee';
+import VODShowcase from './components/VODShowcase';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 
@@ -10,7 +12,9 @@ function App() {
     <div className="app">
       <Navbar />
       <Hero />
+      <Features />
       <FeaturesMarquee />
+      <VODShowcase />
       <Pricing />
       <Footer />
       
