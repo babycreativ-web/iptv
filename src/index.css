@@ -83,7 +83,11 @@ button {
   white-space: nowrap;
 }
 
-.marquee-content {
-  display: inline-flex;
-  animation: marquee 40s linear infinite;
+/* Hide scrollbar for pricing on mobile */
+#pricing .container > div {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#pricing .container > div::-webkit-scrollbar {
+  display: none;
 }

@@ -29,8 +29,10 @@ const Pricing = () => {
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', 
-          gap: '20px' 
+          gridTemplateColumns: 'repeat(5, 1fr)', 
+          gap: '15px',
+          width: '100%',
+          overflowX: 'auto'
         }}>
           {plans.map((plan, idx) => (
             <div 
