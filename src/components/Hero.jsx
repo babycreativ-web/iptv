@@ -81,10 +81,11 @@ const Hero = () => {
               src="https://4ksmartiptv.com/wp-content/uploads/2025/09/Abonnement-France-IPTV-768x768.png" 
               alt="IPTV Showcase" 
               style={{ 
-                width: '100%', 
-                maxWidth: '650px', 
-                filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.5))',
-                animation: 'float 6s ease-in-out infinite'
+                width: '120%', 
+                maxWidth: '850px', 
+                filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+                animation: 'float 6s ease-in-out infinite',
+                marginLeft: '-50px'
               }} 
             />
             {/* CSS Animation for floating */}

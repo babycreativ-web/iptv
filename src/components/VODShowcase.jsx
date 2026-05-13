@@ -44,15 +44,15 @@ const VODShowcase = () => {
         }} />
 
         <div className="marquee-container" style={{ width: '100%' }}>
-          <div className="marquee-content-movies" style={{ display: 'flex', gap: '30px', animation: 'movieScroll 40s linear infinite' }}>
+          <div className="marquee-content-movies" style={{ display: 'flex', gap: '40px', animation: 'movieScroll 50s linear infinite' }}>
             {displayPosters.map((poster, idx) => (
               <div key={idx} style={{ 
                 flex: '0 0 auto',
-                width: '300px', 
-                height: '450px', 
-                borderRadius: '20px', 
+                width: '400px', 
+                height: '600px', 
+                borderRadius: '30px', 
                 overflow: 'hidden',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+                boxShadow: '0 30px 60px rgba(0,0,0,0.6)',
                 position: 'relative'
               }}>
                 <img 
@@ -70,12 +70,12 @@ const VODShowcase = () => {
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  padding: '25px',
+                  padding: '35px',
                   background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)',
                   textAlign: 'left'
                 }}>
-                  <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#fff' }}>{poster.title}</h3>
-                  <span style={{ fontSize: '12px', color: 'var(--secondary)', fontWeight: 'bold' }}>FULL HD / 4K</span>
+                  <h3 style={{ fontSize: '24px', fontWeight: '900', color: '#fff' }}>{poster.title}</h3>
+                  <span style={{ fontSize: '14px', color: 'var(--secondary)', fontWeight: 'bold' }}>FULL HD / 4K</span>
                 </div>
               </div>
             ))}
@@ -86,7 +86,7 @@ const VODShowcase = () => {
           {`
             @keyframes movieScroll {
               0% { transform: translateX(0); }
-              100% { transform: translateX(calc(-330px * 6)); } /* 300px width + 30px gap */
+              100% { transform: translateX(calc(-440px * 6)); } /* 400px width + 40px gap */
             }
             .marquee-container:hover .marquee-content-movies {
               animation-play-state: paused;
