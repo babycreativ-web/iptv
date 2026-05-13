@@ -1,52 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Globe, Menu, X } from 'lucide-react';
+import { Globe, Menu, X, ChevronRight } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navigate = useNavigate();
 
   const changeLanguage = (lng) => {
     navigate(`/${lng}${window.location.hash}`, { replace: true });
   };
 
   const navLinks = [
-    { name: t('nav.home'), href: '#' },
-    { name: t('nav.pricing'), href: '#pricing' },
-    { name: t('nav.features'), href: '#features' },
-    { name: t('nav.faq'), href: '#faq' },
+    { name: 'ACCUEIL', href: '#' },
+    { name: 'NOS ABONNEMENTS', href: '#pricing' },
+    { name: 'SUPPORT', href: 'https://wa.me/212688407392' },
+    { name: 'FAQ', href: '#faq' },
   ];
 
   return (
     <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass' : 'bg-transparent'}`}
+      className={`fixed top-0 w-full z-100 transition-all duration-500 ${isScrolled ? 'glass shadow-2xl' : 'bg-transparent'}`}
       style={{ 
-        padding: isScrolled ? '1rem 0' : '1.5rem 0',
-        borderBottom: isScrolled ? '1px solid var(--border)' : 'none'
+        padding: isScrolled ? '15px 0' : '25px 0',
+        borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.05)' : 'none'
       }}
     >
-      <div className="container flex justify-between items-center" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Logo />
 
-        {/* Desktop Nav */}
-        <div className="hidden md-flex gap-8 items-center" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-          {navLinks.map((link) => (
-            <a key={link.name} href={link.href} style={{ fontWeight: '500', fontSize: '15px' }}>{link.name}</a>
-          ))}
+        <div style={{ display: 'flex', gap: '35px', alignItems: 'center' }}>
+          <div className="hidden md-flex" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                style={{ 
+                  fontWeight: '800', 
+                  fontSize: '13px', 
+                  letterSpacing: '1px',
+                  color: isScrolled ? '#fff' : '#fff' 
+                }}
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
           
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginLeft: '20px' }}>
-            <Globe size={18} color="var(--text-muted)" />
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '5px 12px', borderRadius: '50px' }}>
+            <Globe size={14} color="var(--primary)" />
             <select 
               onChange={(e) => changeLanguage(e.target.value)}
               value={i18n.language}
@@ -55,32 +65,32 @@ const Navbar = () => {
                 color: 'white',
                 border: 'none',
                 cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600'
+                fontSize: '12px',
+                fontWeight: '900'
               }}
             >
-              <option value="en" style={{ background: '#1e293b' }}>EN</option>
-              <option value="fr" style={{ background: '#1e293b' }}>FR</option>
-              <option value="es" style={{ background: '#1e293b' }}>ES</option>
+              <option value="en" style={{ background: '#0a0b1e' }}>EN</option>
+              <option value="fr" style={{ background: '#0a0b1e' }}>FR</option>
+              <option value="es" style={{ background: '#0a0b1e' }}>ES</option>
             </select>
           </div>
 
           <a 
             href="https://wa.me/212688407392" 
-            className="glass"
             style={{ 
-              padding: '10px 20px', 
-              fontSize: '14px', 
-              fontWeight: '700',
-              background: 'linear-gradient(135deg, var(--primary), var(--accent))',
-              border: 'none'
+              padding: '12px 25px', 
+              fontSize: '13px', 
+              fontWeight: '900',
+              background: 'var(--primary)',
+              borderRadius: '50px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}
           >
-            {t('nav.contact')}
+            S'ABONNER <ChevronRight size={16} />
           </a>
         </div>
-
-        {/* Mobile Toggle would go here in a real app */}
       </div>
     </nav>
   );

@@ -1,85 +1,59 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Check, Zap } from 'lucide-react';
+import { Check, Zap, ShoppingCart } from 'lucide-react';
 
 const Pricing = () => {
   const { t } = useTranslation();
-  const [connections, setConnections] = useState(1);
 
-  const basePlans = [
-    { duration: 1, label: t('pricing.month'), price: 15, popular: false },
-    { duration: 3, label: `3 ${t('pricing.months')}`, price: 35, popular: false },
-    { duration: 6, label: `6 ${t('pricing.months')}`, price: 55, popular: true },
-    { duration: 12, label: `12 ${t('pricing.year')}`, price: 85, popular: false },
+  const plans = [
+    { duration: 1, label: '1 MOIS', price: 11, popular: false },
+    { duration: 3, label: '3 MOIS', price: 21, popular: false },
+    { duration: 6, label: '6 MOIS', price: 31, popular: false },
+    { duration: 12, label: '12 MOIS', price: 51, popular: true },
+    { duration: 24, label: '24 MOIS', price: 81, popular: false },
   ];
 
-  const getPrice = (basePrice) => {
-    const multipliers = { 1: 1, 2: 1.7, 3: 2.3 };
-    return Math.floor(basePrice * (multipliers[connections] || 1));
-  };
-
   const features = [
-    t('pricing.features.channels'),
-    t('pricing.features.vod'),
-    t('pricing.features.quality'),
-    t('pricing.features.catchup'),
-    t('pricing.features.support'),
-    t('pricing.features.antifreeze'),
+    "+ 120.000 Chaines",
+    "+ 60.000 Films & Séries",
+    "Qualité 4K / UHD / HEVC",
+    "Assistance 24/7",
+    "Mise à jour gratuite",
+    "Anti-Freeze Technologie",
+    "Compatible Smart TV, Android, MAG...",
   ];
 
   return (
-    <section id="pricing" style={{ padding: '100px 0', background: 'rgba(15, 23, 42, 0.3)' }}>
+    <section id="pricing" style={{ padding: '100px 0', background: '#080917' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '16px' }}>{t('pricing.title')}</h2>
-          <p style={{ color: 'var(--text-muted)' }}>{t('pricing.subtitle')}</p>
-          
-          {/* Connection Selector */}
-          <div style={{ 
-            marginTop: '40px',
-            display: 'inline-flex',
-            background: 'var(--bg-card)',
-            padding: '4px',
-            borderRadius: '12px',
-            border: '1px solid var(--border)'
-          }}>
-            {[1, 2, 3].map((num) => (
-              <button
-                key={num}
-                onClick={() => setConnections(num)}
-                style={{
-                  padding: '10px 24px',
-                  borderRadius: '10px',
-                  fontSize: '14px',
-                  fontWeight: '700',
-                  background: connections === num ? 'var(--primary)' : 'transparent',
-                  color: connections === num ? 'white' : 'var(--text-muted)',
-                  transition: '0.3s'
-                }}
-              >
-                {num} {num === 1 ? 'Screen' : 'Screens'}
-              </button>
-            ))}
-          </div>
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <h2 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '20px' }}>NOS ABONNEMENTS <span style={{ color: 'var(--primary)' }}>PREMIUM</span></h2>
+          <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto' }}>
+            Choisissez le plan qui vous convient et profitez de la meilleure expérience IPTV en France et à l'international.
+          </p>
         </div>
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
-          gap: '30px',
-          paddingTop: '20px'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
+          gap: '20px',
+          alignItems: 'flex-start'
         }}>
-          {basePlans.map((plan, idx) => (
+          {plans.map((plan, idx) => (
             <motion.div
               key={idx}
               whileHover={{ y: -10 }}
-              className="glass"
               style={{
-                padding: '40px 30px',
+                background: plan.popular 
+                  ? 'linear-gradient(180deg, #6a11cb 0%, #2575fc 100%)' 
+                  : 'var(--bg-card)',
+                padding: '40px 25px',
+                borderRadius: '24px',
+                textAlign: 'center',
+                border: '1px solid rgba(255,255,255,0.05)',
                 position: 'relative',
-                border: plan.popular ? '2px solid var(--primary)' : '1px solid var(--border)',
-                background: plan.popular ? 'rgba(99, 102, 241, 0.05)' : 'var(--bg-card)'
+                boxShadow: plan.popular ? '0 20px 40px rgba(106, 17, 203, 0.3)' : 'none'
               }}
             >
               {plan.popular && (
@@ -88,50 +62,63 @@ const Pricing = () => {
                   top: '-15px',
                   left: '50%',
                   transform: 'translateX(-50%)',
-                  background: 'var(--primary)',
-                  padding: '4px 16px',
-                  borderRadius: '100px',
+                  background: 'var(--secondary)',
+                  color: '#000',
+                  padding: '5px 20px',
+                  borderRadius: '50px',
                   fontSize: '12px',
-                  fontWeight: '800',
+                  fontWeight: '900',
                   textTransform: 'uppercase'
                 }}>
-                  Most Popular
+                  Meilleur Choix
                 </div>
               )}
 
-              <h3 style={{ fontSize: '20px', marginBottom: '10px' }}>{plan.label}</h3>
-              <div style={{ display: 'flex', alignItems: 'baseline', marginBottom: '30px' }}>
-                <span style={{ fontSize: '40px', fontWeight: '800' }}>€{getPrice(plan.price)}</span>
-                <span style={{ color: 'var(--text-muted)', marginLeft: '4px' }}>/{plan.duration === 12 ? 'year' : 'term'}</span>
+              <h3 style={{ fontSize: '24px', fontWeight: '800', marginBottom: '20px' }}>{plan.label}</h3>
+              
+              <div style={{ marginBottom: '30px' }}>
+                <span style={{ fontSize: '48px', fontWeight: '900' }}>{plan.price}€</span>
+                <div style={{ fontSize: '14px', color: plan.popular ? 'rgba(255,255,255,0.7)' : 'var(--text-muted)' }}>
+                  Paiement unique
+                </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '40px' }}>
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '12px', 
+                marginBottom: '40px',
+                textAlign: 'left',
+                fontSize: '13px'
+              }}>
                 {features.map((feat, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px' }}>
-                    <div style={{ color: 'var(--success)' }}><Check size={16} /></div>
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Check size={14} color={plan.popular ? '#fff' : 'var(--primary)'} strokeWidth={3} />
                     <span>{feat}</span>
                   </div>
                 ))}
               </div>
 
               <a
-                href={`https://wa.me/212688407392?text=Hello, I want to order the ${plan.label} plan for ${connections} connection(s).`}
+                href={`https://wa.me/212688407392?text=Bonjour, je souhaite commander le pack ${plan.label} à ${plan.price}€.`}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '8px',
+                  gap: '10px',
                   width: '100%',
                   padding: '16px',
-                  borderRadius: '12px',
-                  background: plan.popular ? 'var(--primary)' : 'rgba(255, 255, 255, 0.05)',
-                  border: plan.popular ? 'none' : '1px solid var(--border)',
+                  borderRadius: '15px',
+                  background: plan.popular ? '#fff' : 'var(--primary)',
+                  color: plan.popular ? 'var(--primary)' : '#fff',
                   fontWeight: '800',
+                  fontSize: '14px',
+                  textTransform: 'uppercase',
                   transition: '0.3s'
                 }}
               >
-                <Zap size={18} />
-                {t('pricing.order_now')}
+                <ShoppingCart size={18} />
+                COMMANDER
               </a>
             </motion.div>
           ))}

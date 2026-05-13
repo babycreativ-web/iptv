@@ -1,59 +1,37 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-const VODShowcase = () => {
-  const brands = [
-    { name: 'Netflix', color: '#e50914' },
-    { name: 'Disney+', color: '#0063e5' },
-    { name: 'NBA', img: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/06/NBA.png' },
-    { name: 'Prime Video', color: '#00a8e1' },
-    { name: 'NFL', img: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/06/NFL.png' },
-    { name: 'HBO Max', color: '#7e10b2' },
-    { name: 'Sky Sports', color: '#00b0f0' },
+const AppCompatibility = () => {
+  const apps = [
+    { name: 'Smarters Pro', url: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/smart-tv-1.png' },
+    { name: 'IBO Player', url: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/smart-tv-1.png' }, // Placeholder icons
+    { name: 'Set IPTV', url: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/smart-tv-1.png' },
+    { name: 'Net IPTV', url: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/smart-tv-1.png' },
+    { name: 'Apple TV', url: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/smart-tv-1.png' },
+    { name: 'Android TV', url: 'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/smart-tv-1.png' },
   ];
 
-  // Using a double array for seamless loop
-  const displayBrands = [...brands, ...brands];
-
   return (
-    <section style={{ padding: '60px 0', background: 'rgba(0,0,0,0.2)', borderY: '1px solid var(--border)' }}>
-      <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', position: 'relative' }}>
-        <motion.div 
-          animate={{ x: [0, -1000] }}
-          transition={{ 
-            duration: 30, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-          style={{ display: 'inline-flex', gap: '80px', alignItems: 'center' }}
-        >
-          {displayBrands.map((brand, idx) => (
-            <div key={idx} style={{ 
-              fontSize: '24px', 
-              fontWeight: '900', 
-              color: 'var(--text-muted)', 
-              opacity: 0.7,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '15px'
-            }}>
-              {brand.img ? (
-                <img src={brand.img} alt={brand.name} style={{ height: '40px', filter: 'grayscale(1) brightness(2)' }} />
-              ) : (
-                <span style={{ 
-                  background: brand.color,
-                  width: '12px',
-                  height: '12px',
-                  borderRadius: '50%'
-                }} />
-              )}
-              {brand.name}
+    <section style={{ padding: '80px 0', background: 'var(--bg-dark)' }}>
+      <div className="container">
+        <h3 style={{ textAlign: 'center', marginBottom: '50px', fontSize: '2rem', fontWeight: '800' }}>COMPATIBLE AVEC TOUTES LES APPLICATIONS</h3>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', 
+          gap: '30px', 
+          justifyContent: 'center' 
+        }}>
+          {apps.map((app, idx) => (
+            <div key={idx} style={{ textAlign: 'center' }}>
+              <div className="glass" style={{ width: '100px', height: '100px', margin: '0 auto 15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src={app.url} alt={app.name} style={{ width: '60px', height: 'auto' }} />
+              </div>
+              <span style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-muted)' }}>{app.name}</span>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default VODShowcase;
+export default AppCompatibility;
