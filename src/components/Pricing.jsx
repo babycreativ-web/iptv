@@ -60,7 +60,7 @@ const Pricing = () => {
                   borderRadius: '50px',
                   fontSize: '11px',
                   fontWeight: '900'
-                }}>BEST SELLER</div>
+                }}>MEILLEURE VENTE</div>
               )}
 
               <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '25px' }}>{plan.duration}</h3>

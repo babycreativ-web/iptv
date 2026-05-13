@@ -3,23 +3,23 @@ import React from 'react';
 const DeviceShowcase = () => {
   const highlights = [
     {
-      title: "Great Pricing",
-      desc: "Save significantly compared to traditional cable prices with our affordable IPTV plans!",
+      title: "Tarifs avantageux",
+      desc: "Économisez considérablement par rapport aux prix du câble traditionnel avec nos forfaits IPTV abordables !",
       icon: "https://firstiptv-4k.com/wp-content/uploads/2024/10/image_39.webp"
     },
     {
-      title: "Premium Channels",
-      desc: "Enjoy Live Sports, PPV, 24/7 Channels & more at no additional cost!",
+      title: "Chaînes Premium",
+      desc: "Profitez des sports en direct, du PPV, des chaînes 24h/24 et 7j/7 et plus encore sans frais supplémentaires !",
       icon: "https://firstiptv-4k.com/wp-content/uploads/2024/10/image_42.webp"
     },
     {
-      title: "High-Quality Streaming",
-      desc: "Enjoy HD and 8K streaming for a superior viewing experience with minimal buffering and lag.",
+      title: "Streaming de haute qualité",
+      desc: "Profitez d'un streaming HD et 8K pour une expérience visuelle supérieure avec un minimum de mise en mémoire tampon.",
       icon: "https://firstiptv-4k.com/wp-content/uploads/2024/10/image_47-1.webp"
     },
     {
-      title: "Newest Content",
-      desc: "We frequently update our servers, adding the newest Channels, Movies & Shows!",
+      title: "Nouveau contenu",
+      desc: "Nous mettons fréquemment à jour nos serveurs, en ajoutant les dernières chaînes, films et émissions !",
       icon: "https://firstiptv-4k.com/wp-content/uploads/2024/10/image_44.webp"
     }
   ];
@@ -60,7 +60,7 @@ const DeviceShowcase = () => {
             <img 
               src="https://firstiptv-4k.com/wp-content/uploads/2024/10/TVIP.webp" 
               alt="TV Interface" 
-              style={{ width: '100%', maxWidth: '700px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }} 
+              style={{ width: '100%', maxWidth: '750px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }} 
             />
           </div>
 

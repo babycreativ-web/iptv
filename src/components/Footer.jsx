@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './Logo';
 
 const Footer = () => {
   return (
@@ -6,8 +7,8 @@ const Footer = () => {
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '50px', marginBottom: '60px' }}>
           <div>
-            <img src="https://4ksmartiptv.com/wp-content/uploads/2024/05/cropped-logo-4k-smart-iptv-1.png" alt="Logo" style={{ height: '50px', marginBottom: '25px' }} />
-            <p style={{ color: 'var(--text-gray)', fontSize: '14px' }}>
+            <Logo className="mb-6" />
+            <p style={{ color: 'var(--text-gray)', fontSize: '14px', marginTop: '20px' }}>
               Le meilleur service IPTV en France. Plus de 120 000 chaînes et VOD de haute qualité.
             </p>
           </div>
@@ -20,7 +21,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 style={{ marginBottom: '25px' }}>TRUSTED BY THOUSANDS</h4>
+            <h4 style={{ marginBottom: '25px' }}>APPROUVÉ PAR DES MILLIERS</h4>
             <img src="https://4ksmartiptv.com/wp-content/uploads/2023/06/Trustpilot-2048x340-1-768x128.png" alt="Trustpilot" style={{ width: '100%', maxWidth: '220px' }} />
             <img src="https://4ksmartiptv.com/wp-content/uploads/2023/09/afe-checkout-badge.png-768x142.webp" alt="Payments" style={{ width: '100%', maxWidth: '250px', marginTop: '20px' }} />
           </div>

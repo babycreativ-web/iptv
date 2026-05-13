@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Globe, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,11 +24,7 @@ const Navbar = () => {
       borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none'
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <img 
-          src="https://4ksmartiptv.com/wp-content/uploads/2024/05/cropped-logo-4k-smart-iptv-1.png" 
-          alt="4K SMART IPTV" 
-          style={{ height: '50px' }} 
-        />
+        <Logo />
         
         <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
           <div className="hidden md-flex" style={{ display: 'flex', gap: '25px', fontWeight: '800', fontSize: '13px' }}>
