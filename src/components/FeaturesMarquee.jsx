@@ -3,10 +3,10 @@ import React from 'react';
 const FeaturesMarquee = () => {
   const logos = [
     'https://cdn.simpleicons.org/netflix/ffffff',
-    'https://cdn.simpleicons.org/primevideo/ffffff',
-    'https://cdn.simpleicons.org/disneyplus/ffffff',
+    'https://cdn.simpleicons.org/paramountplus/ffffff',
+    'https://cdn.simpleicons.org/crunchyroll/ffffff',
     'https://cdn.simpleicons.org/hbo/ffffff',
-    'https://cdn.simpleicons.org/hulu/ffffff',
+    'https://cdn.simpleicons.org/vimeo/ffffff',
     'https://cdn.simpleicons.org/appletv/ffffff',
     'https://cdn.simpleicons.org/youtube/ffffff',
   ];
