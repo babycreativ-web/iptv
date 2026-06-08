@@ -110,19 +110,21 @@ const Pricing = () => {
                   </h3>
 
                   {/* Price */}
-                  <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+                  <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'baseline', gap: '2px', whiteSpace: 'nowrap', flexWrap: 'nowrap' }}>
                     <span style={{
-                      fontSize: 'clamp(36px, 4vw, 52px)',
+                      fontSize: 'clamp(32px, 3.5vw, 46px)',
                       fontWeight: '900',
                       lineHeight: 1,
                       color: isPop ? '#fff' : '#0047ff',
                     }}>
-                      {plan.price} <span style={{ fontSize: '28px' }}>€</span>
+                      {plan.price}
                     </span>
+                    <span style={{ fontSize: 'clamp(18px, 2vw, 24px)', fontWeight: '900', color: isPop ? '#fff' : '#0047ff' }}>€</span>
                     <span style={{
-                      fontSize: '14px',
+                      fontSize: '13px',
                       fontWeight: '600',
-                      color: isPop ? 'rgba(255,255,255,0.7)' : '#718096'
+                      color: isPop ? 'rgba(255,255,255,0.7)' : '#718096',
+                      marginLeft: '2px',
                     }}>
                       {plan.period}
                     </span>
