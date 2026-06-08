@@ -3,11 +3,11 @@ import { Check, ShoppingCart } from 'lucide-react';
 
 const Pricing = () => {
   const plans = [
-    { duration: '1 MOIS', price: 11, popular: false },
-    { duration: '3 MOIS', price: 21, popular: false },
-    { duration: '6 MOIS', price: 31, popular: false },
-    { duration: '12 MOIS', price: 51, popular: true },
-    { duration: '24 MOIS', price: 81, popular: false },
+    { duration: '1 MOIS', price: 9.99, popular: false },
+    { duration: '3 MOIS', price: 29.99, popular: false },
+    { duration: '6 MOIS', price: 39.99, popular: true },
+    { duration: '12 MOIS', price: 59, popular: false },
+    { duration: '24 MOIS', price: 89.99, popular: false },
   ];
 
   const features = [
