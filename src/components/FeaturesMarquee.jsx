@@ -2,13 +2,13 @@ import React from 'react';
 
 const FeaturesMarquee = () => {
   const logos = [
-    'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/brand_item21-150x46-1-1.webp',
-    'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/brand_item13-150x46-1-1.webp',
-    'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/brand_item18-150x46-1-1.webp',
-    'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/brand_item06-150x46-1-1.webp',
-    'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/brand_item15-150x46-1-1.webp',
-    'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/brand_item08-150x46-1-1.webp',
-    'https://cdn-ilelamg.nitrocdn.com/hBgIufmzBLKnLVRnKfaGsxIFVPGsFzfg/assets/images/optimized/rev-0733712/4ksmartiptv.com/wp-content/uploads/2023/04/brand_item16-150x46-1-1.webp',
+    'https://cdn.simpleicons.org/netflix/ffffff',
+    'https://cdn.simpleicons.org/primevideo/ffffff',
+    'https://cdn.simpleicons.org/disneyplus/ffffff',
+    'https://cdn.simpleicons.org/hbo/ffffff',
+    'https://cdn.simpleicons.org/hulu/ffffff',
+    'https://cdn.simpleicons.org/appletv/ffffff',
+    'https://cdn.simpleicons.org/youtube/ffffff',
   ];
 
   return (
