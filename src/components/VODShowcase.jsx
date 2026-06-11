@@ -43,17 +43,9 @@ const VODShowcase = () => {
         }} />
 
         <div className="marquee-container" style={{ width: '100%' }}>
-          <div className="marquee-content-movies" style={{ display: 'flex', gap: '40px', animation: 'movieScroll 50s linear infinite' }}>
+          <div className="marquee-content-movies">
             {displayPosters.map((poster, idx) => (
-              <div key={idx} style={{ 
-                flex: '0 0 auto',
-                width: '400px', 
-                height: '600px', 
-                borderRadius: '30px', 
-                overflow: 'hidden',
-                boxShadow: '0 30px 60px rgba(0,0,0,0.6)',
-                position: 'relative'
-              }}>
+              <div key={idx} className="vod-poster">
                 <img 
                   src={poster.url} 
                   alt={poster.title} 
@@ -80,18 +72,6 @@ const VODShowcase = () => {
             ))}
           </div>
         </div>
-
-        <style>
-          {`
-            @keyframes movieScroll {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(calc(-440px * 6)); } /* 400px width + 40px gap */
-            }
-            .marquee-container:hover .marquee-content-movies {
-              animation-play-state: paused;
-            }
-          `}
-        </style>
       </div>
     </section>
   );

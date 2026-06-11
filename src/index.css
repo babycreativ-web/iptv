@@ -91,3 +91,178 @@ button {
 #pricing .container > div::-webkit-scrollbar {
   display: none;
 }
+
+/* ==========================================================================
+   Responsive Layout Classes
+   ========================================================================== */
+
+/* Navbar responsive rules */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  background: transparent;
+  transition: 0.4s;
+  border-bottom: none;
+}
+
+.navbar.scrolled {
+  padding: 10px 0;
+  background: var(--glass-header);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links-desktop {
+  display: flex;
+  gap: 25px;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links-mobile {
+  display: none;
+  flex-direction: column;
+  background: #050614;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 25px 30px;
+  gap: 20px;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  text-align: center;
+}
+
+.nav-links-mobile.open {
+  display: flex;
+}
+
+/* Hero responsive rules */
+.hero-section {
+  padding-top: 180px;
+  padding-bottom: 100px;
+  background: var(--bg-dark);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* VOD Marquee responsive rules */
+.marquee-content-movies {
+  display: flex;
+  gap: 40px;
+  animation: movieScroll 50s linear infinite;
+}
+
+.vod-poster {
+  flex: 0 0 auto;
+  width: 320px;
+  height: 480px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  position: relative;
+}
+
+@keyframes movieScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-360px * 6)); } /* 320px width + 40px gap */
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .hero-section {
+    padding-top: 130px;
+    padding-bottom: 60px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 50px;
+  }
+  
+  .hero-grid img {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+  }
+  
+  .hero-grid div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-grid div:first-child p {
+    margin: 0 auto 30px !important;
+  }
+  
+  .hero-grid div:first-child div {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links-desktop {
+    display: none;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-cta {
+    padding: 10px 18px !important;
+    font-size: 11px !important;
+  }
+  
+  .vod-poster {
+    width: 220px;
+    height: 330px;
+    border-radius: 16px;
+  }
+  
+  .marquee-content-movies {
+    gap: 20px;
+    animation: movieScrollMobile 40s linear infinite;
+  }
+  
+  @keyframes movieScrollMobile {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-240px * 6)); } /* 220px width + 20px gap */
+  }
+}
+

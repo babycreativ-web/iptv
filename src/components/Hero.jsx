@@ -2,16 +2,7 @@ import { MessageSquare, ShieldCheck, Zap } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section style={{ 
-      paddingTop: '180px', 
-      paddingBottom: '100px', 
-      background: 'var(--bg-dark)',
-      minHeight: '90vh',
-      display: 'flex',
-      alignItems: 'center',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
+    <section className="hero-section">
       {/* Background Glow */}
       <div style={{
         position: 'absolute',
@@ -24,12 +15,7 @@ const Hero = () => {
       }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1.2fr 0.8fr', 
-          gap: '40px', 
-          alignItems: 'center' 
-        }}>
+        <div className="hero-grid">
           
           <div>
             <span style={{ 

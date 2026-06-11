@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -12,32 +13,40 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav style={{
-      position: 'fixed',
-      top: 0,
-      width: '100%',
-      zIndex: 1000,
-      padding: scrolled ? '10px 0' : '20px 0',
-      background: scrolled ? 'var(--glass-header)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(10px)' : 'none',
-      transition: '0.4s',
-      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none'
-    }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container navbar-container">
         <Logo />
         
         <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-          <div className="hidden md-flex" style={{ display: 'flex', gap: '25px', fontWeight: '800', fontSize: '13px' }}>
+          {/* Desktop Links */}
+          <div className="nav-links-desktop">
             <a href="#">ACCUEIL</a>
             <a href="#pricing">NOS ABONNEMENTS</a>
             <a href="#faq">FAQ</a>
             <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer">CONTACT</a>
           </div>
 
-          <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '12px 25px', fontSize: '12px' }}>
+          <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer" className="btn-primary nav-cta" style={{ padding: '12px 25px', fontSize: '12px' }}>
             COMMANDER <ArrowRight size={16} />
           </a>
+
+          {/* Hamburger Icon */}
+          <button 
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{ color: '#fff' }}
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+      </div>
+
+      {/* Mobile Drawer Links */}
+      <div className={`nav-links-mobile ${menuOpen ? 'open' : ''}`}>
+        <a href="#" onClick={() => setMenuOpen(false)}>ACCUEIL</a>
+        <a href="#pricing" onClick={() => setMenuOpen(false)}>NOS ABONNEMENTS</a>
+        <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+        <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>CONTACT</a>
       </div>
     </nav>
   );

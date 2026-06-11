@@ -53,7 +53,7 @@ const DeviceShowcase = () => {
       }} />
 
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '60px', alignItems: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '60px', alignItems: 'center' }}>
           
           <div style={{ textAlign: 'center' }}>
             <img 
