@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -6,6 +5,7 @@ import DeviceShowcase from './components/DeviceShowcase';
 import FeaturesMarquee from './components/FeaturesMarquee';
 import VODShowcase from './components/VODShowcase';
 import Pricing from './components/Pricing';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
       <FeaturesMarquee />
       <VODShowcase />
       <Pricing />
+      <FAQ />
       <Footer />
       
       {/* Floating WhatsApp fixed at 100% clone position */}

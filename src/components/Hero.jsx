@@ -1,4 +1,3 @@
-import React from 'react';
 import { MessageSquare, ShieldCheck, Zap } from 'lucide-react';
 
 const Hero = () => {

@@ -1,0 +1,127 @@
+import { useState } from 'react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
+
+const FAQ = () => {
+  const [openIdx, setOpenIdx] = useState(null);
+
+  const faqs = [
+    {
+      q: "Qu'est-ce que l'IPTV et comment cela fonctionne-t-il ?",
+      a: "L'IPTV (Internet Protocol Television) diffuse des chaînes de télévision en direct et des vidéos à la demande (VOD) directement via votre connexion internet, éliminant ainsi le besoin d'antennes paraboliques ou de câbles traditionnels. Il vous suffit d'une connexion internet pour commencer à regarder."
+    },
+    {
+      q: "Quels appareils sont compatibles avec votre abonnement ?",
+      a: "Notre service est compatible avec tous les appareils : Smart TV (Samsung, LG, Sony, Philips), boîtiers Android TV (Xiaomi Mi Box, Nvidia Shield), Apple TV, Firestick, smartphones/tablettes (iOS, Android), ordinateurs (Windows, macOS) et applications comme IPTV Smarters Pro, IBPlayer ou XCIPTV."
+    },
+    {
+      q: "Quelle vitesse de connexion internet est recommandée ?",
+      a: "Pour regarder les chaînes en HD sans mise en mémoire tampon, une vitesse stable de 12 Mbps est conseillée. Pour profiter pleinement du contenu en Full HD et 4K UHD, nous recommandons une connexion de 25 Mbps ou plus (Fibre ou 5G)."
+    },
+    {
+      q: "Comment se déroule l'activation après l'achat ?",
+      a: "L'activation de votre abonnement est ultra-rapide. Une fois votre paiement validé, notre équipe technique configure votre ligne sous 15 à 30 minutes et vous envoie vos identifiants d'accès (lien M3U, codes Xtream) ainsi qu'un guide d'installation étape par étape par e-mail ou WhatsApp."
+    },
+    {
+      q: "Proposez-vous un remboursement si je ne suis pas satisfait ?",
+      a: "Oui, nous offrons une garantie de satisfaction. Si vous rencontrez le moindre problème technique persistant ou si vous changez d'avis durant les 7 premiers jours suivant votre achat, nous vous rembourserons intégralement sans discussion."
+    },
+    {
+      q: "Comment puis-je payer mon abonnement ?",
+      a: "Nous proposons des méthodes de paiement sécurisées et cryptées. Vous pouvez payer en toute sécurité avec votre carte de crédit (Visa, Mastercard) via nos liens sécurisés, ou utiliser PayPal ou Payoneer en contactant directement notre support client WhatsApp."
+    }
+  ];
+
+  const toggleFAQ = (idx) => {
+    setOpenIdx(openIdx === idx ? null : idx);
+  };
+
+  return (
+    <section id="faq" style={{ padding: '100px 20px', background: 'var(--bg-dark)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+        
+        {/* Title */}
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', marginBottom: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
+            <HelpCircle size={32} color="var(--primary)" />
+            QUESTIONS <span style={{ color: 'var(--secondary)' }}>FRÉQUENTES</span>
+          </h2>
+          <p style={{ color: 'var(--text-gray)', fontSize: '16px' }}>
+            Tout ce que vous devez savoir sur notre abonnement IPTV 4K et son activation.
+          </p>
+        </div>
+
+        {/* Accordion List */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          {faqs.map((faq, idx) => {
+            const isOpen = openIdx === idx;
+            return (
+              <div 
+                key={idx} 
+                style={{
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  border: isOpen ? '1px solid rgba(0, 71, 255, 0.3)' : '1px solid rgba(255, 255, 255, 0.05)',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  boxShadow: isOpen ? '0 10px 30px rgba(0, 71, 255, 0.1)' : 'none'
+                }}
+              >
+                {/* Header (Question) */}
+                <button
+                  onClick={() => toggleFAQ(idx)}
+                  style={{
+                    width: '100%',
+                    padding: '22px 28px',
+                    background: 'transparent',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    textAlign: 'left',
+                    gap: '20px',
+                    color: '#fff',
+                    fontFamily: 'inherit'
+                  }}
+                >
+                  <span style={{ fontSize: '16px', fontWeight: '700', lineHeight: '1.4' }}>
+                    {faq.q}
+                  </span>
+                  <div style={{
+                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease',
+                    color: isOpen ? 'var(--primary)' : 'var(--text-gray)',
+                    flexShrink: 0
+                  }}>
+                    <ChevronDown size={20} />
+                  </div>
+                </button>
+
+                {/* Content (Answer) */}
+                <div style={{
+                  maxHeight: isOpen ? '300px' : '0px',
+                  opacity: isOpen ? 1 : 0,
+                  overflow: 'hidden',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}>
+                  <div style={{
+                    padding: '0 28px 28px',
+                    color: 'var(--text-gray)',
+                    fontSize: '15px',
+                    lineHeight: '1.7',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.02)',
+                    paddingTop: '20px'
+                  }}>
+                    {faq.a}
+                  </div>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default FAQ;

@@ -1,4 +1,3 @@
-import React from 'react';
 import Logo from './Logo';
 
 const Footer = () => {
@@ -21,9 +20,8 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 style={{ marginBottom: '25px' }}>APPROUVÉ PAR DES MILLIERS</h4>
-            <img src="https://4ksmartiptv.com/wp-content/uploads/2023/06/Trustpilot-2048x340-1-768x128.png" alt="Trustpilot" style={{ width: '100%', maxWidth: '220px' }} />
-            <img src="https://4ksmartiptv.com/wp-content/uploads/2023/09/afe-checkout-badge.png-768x142.webp" alt="Payments" style={{ width: '100%', maxWidth: '250px', marginTop: '20px' }} />
+            <h4 style={{ marginBottom: '25px' }}>PAIEMENT SÉCURISÉ</h4>
+            <img src="https://4ksmartiptv.com/wp-content/uploads/2023/09/afe-checkout-badge.png-768x142.webp" alt="Payments" style={{ width: '100%', maxWidth: '250px' }} />
           </div>
         </div>
         <div style={{ textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '40px', color: 'var(--text-gray)', fontSize: '12px' }}>

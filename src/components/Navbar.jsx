@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Logo from './Logo';
 
@@ -30,12 +30,11 @@ const Navbar = () => {
           <div className="hidden md-flex" style={{ display: 'flex', gap: '25px', fontWeight: '800', fontSize: '13px' }}>
             <a href="#">ACCUEIL</a>
             <a href="#pricing">NOS ABONNEMENTS</a>
-            <a href="#">CONTACT</a>
-            <a href="#">BLOG</a>
             <a href="#faq">FAQ</a>
+            <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer">CONTACT</a>
           </div>
 
-          <a href="https://wa.me/212688407392" className="btn-primary" style={{ padding: '12px 25px', fontSize: '12px' }}>
+          <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '12px 25px', fontSize: '12px' }}>
             COMMANDER <ArrowRight size={16} />
           </a>
         </div>

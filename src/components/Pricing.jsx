@@ -1,12 +1,43 @@
-import React from 'react';
 import { Check, ShoppingCart } from 'lucide-react';
 
 const Pricing = () => {
+  // CONFIGURATION: Si vous utilisez Gumroad ou un autre service de paiement,
+  // collez le lien de paiement direct dans 'checkoutUrl'.
+  // Si le champ est laissé vide (''), le bouton redirigera automatiquement vers
+  // votre WhatsApp avec un message pré-rempli correspondant à l'offre choisie.
   const plans = [
-    { duration: '1 Mois', price: '9.99', period: '/mois', tagline: "Tester l'abonnement IPTV 4K", popular: false },
-    { duration: '3 Mois', price: '29.99', period: '/3 mois', tagline: 'Excellent abonnement IPTV 4K', popular: false },
-    { duration: '6 Mois', price: '39.99', period: '/6 mois', tagline: 'Meilleur abonnement IPTV 4K', popular: true },
-    { duration: '12 Mois', price: '59', period: '/12 mois', tagline: 'Offre IPTV 4K Premium annuelle', popular: false },
+    { 
+      duration: '1 Mois', 
+      price: '9.99', 
+      period: '/mois', 
+      tagline: "Tester l'abonnement IPTV 4K", 
+      popular: false,
+      checkoutUrl: '' // Exemple: 'https://username.gumroad.com/l/iptv-1m'
+    },
+    { 
+      duration: '3 Mois', 
+      price: '29.99', 
+      period: '/3 mois', 
+      tagline: 'Excellent abonnement IPTV 4K', 
+      popular: false,
+      checkoutUrl: '' // Exemple: 'https://username.gumroad.com/l/iptv-3m'
+    },
+    { 
+      duration: '6 Mois', 
+      price: '39.99', 
+      period: '/6 mois', 
+      tagline: 'Meilleur abonnement IPTV 4K', 
+      popular: true,
+      checkoutUrl: '' // Exemple: 'https://username.gumroad.com/l/iptv-6m'
+    },
+    { 
+      duration: '12 Mois', 
+      price: '59', 
+      period: '/12 mois', 
+      tagline: 'Offre IPTV 4K Premium annuelle', 
+      popular: false,
+      checkoutUrl: '' // Exemple: 'https://username.gumroad.com/l/iptv-12m'
+    },
   ];
 
   const features = [
@@ -37,6 +68,12 @@ const Pricing = () => {
         }}>
           {plans.map((plan, idx) => {
             const isPop = plan.popular;
+            
+            // Calculer l'URL du bouton : si un checkoutUrl est défini, on l'utilise, sinon on va sur WhatsApp
+            const defaultMessage = `Bonjour, je souhaite acheter l'abonnement IPTV 4K pour une durée de ${plan.duration} à ${plan.price}€.`;
+            const buttonHref = plan.checkoutUrl || `https://wa.me/212688407392?text=${encodeURIComponent(defaultMessage)}`;
+            const isExternalCheckout = !!plan.checkoutUrl;
+
             return (
               <div 
                 key={idx} 
@@ -182,7 +219,9 @@ const Pricing = () => {
 
                   {/* CTA Button */}
                   <a
-                    href="https://wa.me/212688407392"
+                    href={buttonHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -219,7 +258,7 @@ const Pricing = () => {
                     }}
                   >
                     <ShoppingCart size={16} />
-                    Acheter IPTV Maintenant
+                    {isExternalCheckout ? 'Acheter Maintenant' : 'Acheter IPTV Maintenant'}
                   </a>
                 </div>
               </div>

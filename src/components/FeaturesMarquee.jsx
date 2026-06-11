@@ -1,4 +1,3 @@
-import React from 'react';
 
 /* Inline SVG logos — no network requests, zero lag */
 const logos = [
