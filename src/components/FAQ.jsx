@@ -5,10 +5,12 @@ const FAQ = () => {
   const [openIdx, setOpenIdx] = useState(null);
   const isEnglish = window.location.pathname.startsWith('/en');
   const isSpanish = window.location.pathname.startsWith('/es');
+  const isGerman = window.location.pathname.startsWith('/de');
 
-  const getFAQText = (en, es, fr) => {
+  const getFAQText = (en, es, de, fr) => {
     if (isEnglish) return en;
     if (isSpanish) return es;
+    if (isGerman) return de;
     return fr;
   };
 
@@ -52,7 +54,7 @@ const FAQ = () => {
     },
     {
       q: "¿Cómo funciona la activación tras la compra?",
-      a: "La activación de su suscripción es ultrarrápida. Una vez validado el pago, nuestro equipo técnico configura su cuenta en 15 a 30 minutos y le envía las credenciales de acceso (enlace M3U, códigos Xtream API) y una guía de instalación a través de WhatsApp o correo electrónico."
+      a: "La activación de su suscripción es ultrarrápida. Once validado el pago, nuestro equipo técnico configura su cuenta en 15 a 30 minutos y le envía las credenciales de acceso (enlace M3U, códigos Xtream API) y una guía de instalación a través de WhatsApp o correo electrónico."
     },
     {
       q: "¿Ofrecen reembolso si no estoy satisfecho?",
@@ -61,6 +63,31 @@ const FAQ = () => {
     {
       q: "¿Cómo puedo pagar mi suscripción?",
       a: "Ofrecemos pasarelas de pago seguras y encriptadas. Puede pagar de forma segura con tarjeta de crédito (Visa, Mastercard), o utilizar PayPal o Payoneer contactando directamente a nuestro equipo de soporte de WhatsApp."
+    }
+  ] : isGerman ? [
+    {
+      q: "Was ist IPTV und wie funktioniert es?",
+      a: "IPTV (Internet Protocol Television) überträgt Live-TV-Kanäle und Video-on-Demand (VOD) über Ihre Internetverbindung direkt auf Ihren Bildschirm, ohne dass eine Satellitenschüssel oder herkömmliche Kabel erforderlich sind. Alles, was Sie brauchen, ist eine Internetverbindung, um loszulegen."
+    },
+    {
+      q: "Welche Geräte sind mit Ihrem Abonnement kompatibel?",
+      a: "Unser Service funktioniert auf allen Geräten: Smart TVs (Samsung, LG, Sony, Philips), Android-TV-Boxen (Xiaomi Mi Box, Nvidia Shield), Apple TV, Firestick, Smartphones/Tablets (iOS, Android), PCs (Windows, macOS) und Anwendungen wie IPTV Smarters Pro, IBO Player oder XCIPTV."
+    },
+    {
+      q: "Welche Internetgeschwindigkeit wird empfohlen?",
+      a: "Um Sender in HD ohne Pufferung anzusehen, wird eine stabile Geschwindigkeit von 12 Mbps empfohlen. Um Full-HD- und 4K-UHD-Inhalte in vollem Umfang genießen zu können, empfehlen wir eine Verbindung von 25 Mbps oder mehr (Glasfaser oder 5G)."
+    },
+    {
+      q: "Wie funktioniert die Freischaltung nach dem Kauf?",
+      a: "Die Aktivierung Ihres Abonnements erfolgt ultraschnell. Sobald Ihre Zahlung bestätigt ist, richtet unser technisches Team Ihren Account in 15 bis 30 Minuten ein und sendet Ihnen Ihre Zugangsdaten (M3U-Wiedergabelisten-Link, Xtream API-Codes) und eine Installationsanleitung per WhatsApp oder E-Mail."
+    },
+    {
+      q: "Bieten Sie eine Rückerstattung an, wenn ich nicht zufrieden bin?",
+      a: "Ja, wir bieten eine Zufriedenheitsgarantie. Wenn Sie auf ein dauerhaftes technisches Problem stoßen oder es sich in den ersten 7 Tagen anders überlegen, erstatten wir Ihnen den Kaufpreis vollständig zurück."
+    },
+    {
+      q: "Wie kann ich mein Abonnement bezahlen?",
+      a: "Wir bieten sichere und verschlüsselte Zahlungsmethoden an. Sie können sicher per Kreditkarte (Visa, Mastercard) bezahlen oder PayPal bzw. Payoneer nutzen, indem Sie sich direkt an unseren WhatsApp-Support wenden."
     }
   ] : [
     {
@@ -104,6 +131,7 @@ const FAQ = () => {
             {getFAQText(
               <>FREQUENTLY <span style={{ color: 'var(--secondary)' }}>ASKED</span> QUESTIONS</>,
               <>PREGUNTAS <span style={{ color: 'var(--secondary)' }}>FRECUENTES</span></>,
+              <>HÄUFIG <span style={{ color: 'var(--secondary)' }}>GESTELLTE</span> FRAGEN</>,
               <>QUESTIONS <span style={{ color: 'var(--secondary)' }}>FRÉQUENTES</span></>
             )}
           </h2>
@@ -111,6 +139,7 @@ const FAQ = () => {
             {getFAQText(
               "Everything you need to know about our 4K IPTV subscription and activation.",
               "Todo lo que necesita saber sobre nuestra suscripción IPTV 4K y su activación.",
+              "Alles, was Sie über unser 4K IPTV-Abonnement und die Aktivierung wissen müssen.",
               "Tout ce que vous devez savoir sur notre abonnement IPTV 4K et son activation."
             )}
           </p>

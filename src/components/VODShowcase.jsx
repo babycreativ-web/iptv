@@ -2,10 +2,12 @@
 const VODShowcase = () => {
   const isEnglish = window.location.pathname.startsWith('/en');
   const isSpanish = window.location.pathname.startsWith('/es');
+  const isGerman = window.location.pathname.startsWith('/de');
 
-  const getVODText = (en, es, fr) => {
+  const getVODText = (en, es, de, fr) => {
     if (isEnglish) return en;
     if (isSpanish) return es;
+    if (isGerman) return de;
     return fr;
   };
 
@@ -25,12 +27,13 @@ const VODShowcase = () => {
     <section style={{ padding: '100px 0', background: 'var(--bg-dark)', overflow: 'hidden' }}>
       <div className="container" style={{ textAlign: 'center', marginBottom: '60px' }}>
         <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '15px' }}>
-          {getVODText('LATEST MOVIES & TV SHOWS 2026', 'ÚLTIMAS PELÍCULAS Y SERIES 2026', 'DERNIERS FILMS & SÉRIES 2026')}
+          {getVODText('LATEST MOVIES & TV SHOWS 2026', 'ÚLTIMAS PELÍCULAS Y SERIES 2026', 'NEUESTE FILME & SERIEN 2026', 'DERNIERS FILMS & SÉRIES 2026')}
         </h2>
         <p style={{ color: 'var(--text-gray)', fontSize: '1.2rem' }}>
           {getVODText(
             'Enjoy an unlimited video-on-demand library updated daily.',
             'Disfrute de una biblioteca de video bajo demanda ilimitada y actualizada diariamente.',
+            'Genießen Sie eine unbegrenzte Video-on-Demand-Bibliothek, die täglich aktualisiert wird.',
             "Profitez d'une bibliothèque illimitée avec des sorties quotidiennes."
           )}
         </p>
@@ -66,6 +69,7 @@ const VODShowcase = () => {
                   alt={getVODText(
                     `${poster.title} - Stream on 4K IPTV`,
                     `${poster.title} - Ver en streaming IPTV 4K`,
+                    `${poster.title} - Streamen auf 4K IPTV`,
                     `${poster.title} - Regarder en streaming IPTV 4K`
                   )} 
                   style={{ 

@@ -3,6 +3,7 @@ import { MessageSquare, ShieldCheck, Zap } from 'lucide-react';
 const Hero = () => {
   const isEnglish = window.location.pathname.startsWith('/en');
   const isSpanish = window.location.pathname.startsWith('/es');
+  const isGerman = window.location.pathname.startsWith('/de');
 
   const getHeroText = () => {
     if (isEnglish) {
@@ -37,6 +38,23 @@ const Hero = () => {
         activation: 'ACTIVACIÓN RÁPIDA',
         imgSrc: '/spain_iptv_showcase.png',
         imgAlt: 'Suscripción IPTV 4K Premium España - Más de 120.000 canales y VOD'
+      };
+    }
+    if (isGerman) {
+      return {
+        badge: '#1 PREMIUM IPTV QUALITÄT',
+        title: (
+          <>
+            PREMIUM 4K <br />
+            <span style={{ color: 'var(--secondary)' }}>IPTV</span> ABONNEMENT
+          </>
+        ),
+        desc: 'Über 120.000 internationale Kanäle & 60.000 VOD in 4K/UHD. 100% garantierte Stabilität mit unserer Anti-Freeze-Technologie.',
+        btn: 'PER WHATSAPP BESTELLEN',
+        payment: 'SICHERE ZAHLUNG',
+        activation: 'SCHNELLE AKTIVIERUNG',
+        imgSrc: '/germany_iptv_showcase.png',
+        imgAlt: 'Premium 4K IPTV Deutschland Abonnement - Über 120.000 Kanäle & VOD'
       };
     }
     return {
@@ -126,7 +144,7 @@ const Hero = () => {
                 filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
                 animation: 'float 6s ease-in-out infinite',
                 marginLeft: '-50px',
-                borderRadius: (isEnglish || isSpanish) ? '24px' : '0px'
+                borderRadius: (isEnglish || isSpanish || isGerman) ? '24px' : '0px'
               }} 
             />
             {/* CSS Animation for floating */}
