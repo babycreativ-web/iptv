@@ -1,46 +1,50 @@
 import { Check, ShoppingCart } from 'lucide-react';
 
 const Pricing = () => {
-  // CONFIGURATION: Si vous utilisez Gumroad ou un autre service de paiement,
-  // collez le lien de paiement direct dans 'checkoutUrl'.
-  // Si le champ est laissé vide (''), le bouton redirigera automatiquement vers
-  // votre WhatsApp avec un message pré-rempli correspondant à l'offre choisie.
+  const isEnglish = window.location.pathname.startsWith('/en');
+
   const plans = [
     { 
-      duration: '1 Mois', 
+      duration: isEnglish ? '1 Month' : '1 Mois', 
       price: '9.99', 
-      period: '/mois', 
-      tagline: "Tester l'abonnement IPTV 4K", 
+      period: isEnglish ? '/month' : '/mois', 
+      tagline: isEnglish ? "Test our 4K IPTV service" : "Tester l'abonnement IPTV 4K", 
       popular: false,
-      checkoutUrl: '' // Exemple: 'https://username.gumroad.com/l/iptv-1m'
+      checkoutUrl: ''
     },
     { 
-      duration: '3 Mois', 
+      duration: isEnglish ? '3 Months' : '3 Mois', 
       price: '29.99', 
-      period: '/3 mois', 
-      tagline: 'Excellent abonnement IPTV 4K', 
+      period: isEnglish ? '/3 months' : '/3 mois', 
+      tagline: isEnglish ? "Excellent 4K IPTV plan" : "Excellent abonnement IPTV 4K", 
       popular: false,
-      checkoutUrl: '' // Exemple: 'https://username.gumroad.com/l/iptv-3m'
+      checkoutUrl: ''
     },
     { 
-      duration: '6 Mois', 
+      duration: isEnglish ? '6 Months' : '6 Mois', 
       price: '39.99', 
-      period: '/6 mois', 
-      tagline: 'Meilleur abonnement IPTV 4K', 
+      period: isEnglish ? '/6 months' : '/6 mois', 
+      tagline: isEnglish ? "Best value 4K IPTV plan" : "Meilleur abonnement IPTV 4K", 
       popular: true,
-      checkoutUrl: '' // Exemple: 'https://username.gumroad.com/l/iptv-6m'
+      checkoutUrl: ''
     },
     { 
-      duration: '12 Mois', 
+      duration: isEnglish ? '12 Months' : '12 Mois', 
       price: '59', 
-      period: '/12 mois', 
-      tagline: 'Offre IPTV 4K Premium annuelle', 
+      period: isEnglish ? '/12 months' : '/12 mois', 
+      tagline: isEnglish ? "Premium annual 4K IPTV plan" : "Offre IPTV 4K Premium annuelle", 
       popular: false,
-      checkoutUrl: '' // Exemple: 'https://username.gumroad.com/l/iptv-12m'
+      checkoutUrl: ''
     },
   ];
 
-  const features = [
+  const features = isEnglish ? [
+    "20,000+ international channels",
+    "50,000+ movies & TV shows VOD",
+    "HD / Full HD / 4K Video Quality",
+    "Works on Smart TV, Android, iOS",
+    "24/7 WhatsApp IPTV Support",
+  ] : [
     "20 000+ chaînes internationales",
     "50 000+ films & séries VOD",
     "Qualité HD / Full HD / 4K",
@@ -53,10 +57,18 @@ const Pricing = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '900', marginBottom: '15px' }}>
-            NOS <span style={{ color: 'var(--secondary)' }}>OFFRES</span> D'ABONNEMENT
+            {isEnglish ? (
+              <>
+                OUR SUBSCRIPTION <span style={{ color: 'var(--secondary)' }}>PLANS</span>
+              </>
+            ) : (
+              <>
+                NOS <span style={{ color: 'var(--secondary)' }}>OFFRES</span> D'ABONNEMENT
+              </>
+            )}
           </h2>
           <p style={{ color: 'var(--text-gray)', fontSize: '16px', maxWidth: '600px', margin: '0 auto' }}>
-            Choisissez l'abonnement qui vous convient le mieux
+            {isEnglish ? "Choose the plan that suits you best" : "Choisissez l'abonnement qui vous convient le mieux"}
           </p>
         </div>
 
@@ -70,7 +82,9 @@ const Pricing = () => {
             const isPop = plan.popular;
             
             // Calculer l'URL du bouton : si un checkoutUrl est défini, on l'utilise, sinon on va sur WhatsApp
-            const defaultMessage = `Bonjour, je souhaite acheter l'abonnement IPTV 4K pour une durée de ${plan.duration} à ${plan.price}€.`;
+            const defaultMessage = isEnglish
+              ? `Hello, I want to purchase the 4K IPTV subscription for ${plan.duration} at ${plan.price}€.`
+              : `Bonjour, je souhaite acheter l'abonnement IPTV 4K pour une durée de ${plan.duration} à ${plan.price}€.`;
             const buttonHref = plan.checkoutUrl || `https://wa.me/212688407392?text=${encodeURIComponent(defaultMessage)}`;
             const isExternalCheckout = !!plan.checkoutUrl;
 
@@ -118,7 +132,7 @@ const Pricing = () => {
                       letterSpacing: '0.5px',
                       boxShadow: '0 2px 8px rgba(229, 62, 62, 0.4)',
                     }}>
-                      POPULAIRE
+                      {isEnglish ? 'POPULAR' : 'POPULAIRE'}
                     </div>
                   </div>
                 )}

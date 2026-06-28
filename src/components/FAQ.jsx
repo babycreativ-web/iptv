@@ -3,8 +3,34 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const FAQ = () => {
   const [openIdx, setOpenIdx] = useState(null);
+  const isEnglish = window.location.pathname.startsWith('/en');
 
-  const faqs = [
+  const faqs = isEnglish ? [
+    {
+      q: "What is IPTV and how does it work?",
+      a: "IPTV (Internet Protocol Television) delivers live TV channels and video-on-demand (VOD) directly to your screen over your internet connection, bypassing the need for satellite dishes or traditional cables. All you need is an internet connection to start watching."
+    },
+    {
+      q: "Which devices are compatible with your subscription?",
+      a: "Our service works with all devices: Smart TVs (Samsung, LG, Sony, Philips), Android TV boxes (Xiaomi Mi Box, Nvidia Shield), Apple TV, Firestick, smartphones/tablettes (iOS, Android), PCs (Windows, macOS) and applications like IPTV Smarters Pro, IBO Player or XCIPTV."
+    },
+    {
+      q: "What internet speed is recommended?",
+      a: "To watch channels in HD with no buffering, a stable speed of 12 Mbps is advised. To enjoy full HD and 4K UHD content, we recommend a connection speed of 25 Mbps or higher (Fiber or 5G)."
+    },
+    {
+      q: "How does activation work after purchase?",
+      a: "Your activation is super fast. Once payment is validated, our technical team sets up your account in 15 to 30 minutes, sending your credentials (M3U playlist link, Xtream API codes) and installation guide via WhatsApp or email."
+    },
+    {
+      q: "Do you offer a refund if I am not satisfied?",
+      a: "Yes, we offer a satisfaction guarantee. If you run into any persistent technical issue or change your mind within the first 7 days, we will refund your purchase completely with no questions asked."
+    },
+    {
+      q: "How can I pay for my subscription?",
+      a: "We offer secure and encrypted payment gateways. You can pay securely with credit card (Visa, Mastercard), or use PayPal or Payoneer by contacting our WhatsApp support team directly."
+    }
+  ] : [
     {
       q: "Qu'est-ce que l'IPTV et comment cela fonctionne-t-il ?",
       a: "L'IPTV (Internet Protocol Television) diffuse des chaînes de télévision en direct et des vidéos à la demande (VOD) directement via votre connexion internet, éliminant ainsi le besoin d'antennes paraboliques ou de câbles traditionnels. Il vous suffit d'une connexion internet pour commencer à regarder."
@@ -43,10 +69,20 @@ const FAQ = () => {
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', marginBottom: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
             <HelpCircle size={32} color="var(--primary)" />
-            QUESTIONS <span style={{ color: 'var(--secondary)' }}>FRÉQUENTES</span>
+            {isEnglish ? (
+              <>
+                FREQUENTLY <span style={{ color: 'var(--secondary)' }}>ASKED</span> QUESTIONS
+              </>
+            ) : (
+              <>
+                QUESTIONS <span style={{ color: 'var(--secondary)' }}>FRÉQUENTES</span>
+              </>
+            )}
           </h2>
           <p style={{ color: 'var(--text-gray)', fontSize: '16px' }}>
-            Tout ce que vous devez savoir sur notre abonnement IPTV 4K et son activation.
+            {isEnglish 
+              ? "Everything you need to know about our 4K IPTV subscription and activation."
+              : "Tout ce que vous devez savoir sur notre abonnement IPTV 4K et son activation."}
           </p>
         </div>
 

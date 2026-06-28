@@ -12,6 +12,8 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isEnglish = window.location.pathname.startsWith('/en');
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
@@ -20,15 +22,15 @@ const Navbar = () => {
         <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
           {/* Desktop Links */}
           <div className="nav-links-desktop">
-            <a href="#">ACCUEIL</a>
-            <a href="#pricing">NOS ABONNEMENTS</a>
-            <a href="#tutorial">TUTORIEL</a>
+            <a href="#">{isEnglish ? 'HOME' : 'ACCUEIL'}</a>
+            <a href="#pricing">{isEnglish ? 'OUR PLANS' : 'NOS ABONNEMENTS'}</a>
+            <a href="#tutorial">{isEnglish ? 'TUTORIAL' : 'TUTORIEL'}</a>
             <a href="#faq">FAQ</a>
             <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer">CONTACT</a>
           </div>
 
           <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer" className="btn-primary nav-cta" style={{ padding: '12px 25px', fontSize: '12px' }}>
-            COMMANDER <ArrowRight size={16} />
+            {isEnglish ? 'ORDER NOW' : 'COMMANDER'} <ArrowRight size={16} />
           </a>
 
           {/* Hamburger Icon */}
@@ -44,9 +46,9 @@ const Navbar = () => {
 
       {/* Mobile Drawer Links */}
       <div className={`nav-links-mobile ${menuOpen ? 'open' : ''}`}>
-        <a href="#" onClick={() => setMenuOpen(false)}>ACCUEIL</a>
-        <a href="#pricing" onClick={() => setMenuOpen(false)}>NOS ABONNEMENTS</a>
-        <a href="#tutorial" onClick={() => setMenuOpen(false)}>TUTORIEL</a>
+        <a href="#" onClick={() => setMenuOpen(false)}>{isEnglish ? 'HOME' : 'ACCUEIL'}</a>
+        <a href="#pricing" onClick={() => setMenuOpen(false)}>{isEnglish ? 'OUR PLANS' : 'NOS ABONNEMENTS'}</a>
+        <a href="#tutorial" onClick={() => setMenuOpen(false)}>{isEnglish ? 'TUTORIAL' : 'TUTORIEL'}</a>
         <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
         <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>CONTACT</a>
       </div>

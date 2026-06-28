@@ -1,24 +1,34 @@
 
 const DeviceShowcase = () => {
+  const isEnglish = window.location.pathname.startsWith('/en');
+
   const highlights = [
     {
-      title: "Tarifs avantageux",
-      desc: "Économisez considérablement par rapport aux prix du câble traditionnel avec nos forfaits IPTV abordables !",
+      title: isEnglish ? "Affordable Pricing" : "Tarifs avantageux",
+      desc: isEnglish 
+        ? "Save significantly compared to traditional cable costs with our budget-friendly IPTV plans!"
+        : "Économisez considérablement par rapport aux prix du câble traditionnel avec nos forfaits IPTV abordables !",
       icon: "https://firstiptv-4k.com/wp-content/uploads/2024/10/image_39.webp"
     },
     {
-      title: "Chaînes Premium",
-      desc: "Profitez des sports en direct, du PPV, des chaînes 24h/24 et 7j/7 et plus encore sans frais supplémentaires !",
+      title: isEnglish ? "Premium Channels" : "Chaînes Premium",
+      desc: isEnglish 
+        ? "Enjoy live sports, major PPV events, 24/7 channels, and much more at no extra fee!"
+        : "Profitez des sports en direct, du PPV, des chaînes 24h/24 et 7j/7 et plus encore sans frais supplémentaires !",
       icon: "https://firstiptv-4k.com/wp-content/uploads/2024/10/image_42.webp"
     },
     {
-      title: "Streaming de haute qualité",
-      desc: "Profitez d'un streaming HD et 8K pour une expérience visuelle supérieure avec un minimum de mise en mémoire tampon.",
+      title: isEnglish ? "High Quality Streaming" : "Streaming de haute qualité",
+      desc: isEnglish 
+        ? "Stream in HD, Full HD, and 4K UHD for a superior viewing experience with minimal buffering."
+        : "Profitez d'un streaming HD et 8K pour une expérience visuelle supérieure avec un minimum de mise en mémoire tampon.",
       icon: "https://firstiptv-4k.com/wp-content/uploads/2024/10/image_47-1.webp"
     },
     {
-      title: "Nouveau contenu",
-      desc: "Nous mettons fréquemment à jour nos serveurs, en ajoutant les dernières chaînes, films et émissions !",
+      title: isEnglish ? "Regularly Updated" : "Nouveau contenu",
+      desc: isEnglish 
+        ? "We frequently update our servers, adding the latest channels, movies, and hit shows!"
+        : "Nous mettons fréquemment à jour nos serveurs, en ajoutant les dernières chaînes, films et émissions !",
       icon: "https://firstiptv-4k.com/wp-content/uploads/2024/10/image_44.webp"
     }
   ];
@@ -58,7 +68,7 @@ const DeviceShowcase = () => {
           <div style={{ textAlign: 'center' }}>
             <img 
               src="https://firstiptv-4k.com/wp-content/uploads/2024/10/TVIP.webp" 
-              alt="Abonnement IPTV Premium compatible Smart TV, Box Android, Firestick et Apple TV" 
+              alt={isEnglish ? "Premium IPTV Subscription compatible with Smart TV, Android Box, Firestick and Apple TV" : "Abonnement IPTV Premium compatible Smart TV, Box Android, Firestick et Apple TV"} 
               style={{ width: '100%', maxWidth: '750px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }} 
             />
           </div>

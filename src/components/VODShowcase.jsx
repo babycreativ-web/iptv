@@ -1,5 +1,7 @@
 
 const VODShowcase = () => {
+  const isEnglish = window.location.pathname.startsWith('/en');
+
   const posters = [
     { title: "Avengers: Doomsday", url: "https://image.tmdb.org/t/p/original/s2Fkuq0tj7mjAHEdbfQkFkdbeRI.jpg" },
     { title: "Spider-Man 4", url: "https://image.tmdb.org/t/p/original/pspkSVP39NGa6G2rvK5KlMjvYUe.jpg" },
@@ -15,9 +17,11 @@ const VODShowcase = () => {
   return (
     <section style={{ padding: '100px 0', background: 'var(--bg-dark)', overflow: 'hidden' }}>
       <div className="container" style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '15px' }}>DERNIERS FILMS & SÉRIES 2026</h2>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '15px' }}>
+          {isEnglish ? 'LATEST MOVIES & TV SHOWS 2026' : 'DERNIERS FILMS & SÉRIES 2026'}
+        </h2>
         <p style={{ color: 'var(--text-gray)', fontSize: '1.2rem' }}>
-          Profitez d'une bibliothèque illimitée avec des sorties quotidiennes.
+          {isEnglish ? 'Enjoy an unlimited video-on-demand library updated daily.' : "Profitez d'une bibliothèque illimitée avec des sorties quotidiennes."}
         </p>
       </div>
 
@@ -48,7 +52,7 @@ const VODShowcase = () => {
               <div key={idx} className="vod-poster">
                 <img 
                   src={poster.url} 
-                  alt={`${poster.title} - Regarder en streaming IPTV 4K`} 
+                  alt={isEnglish ? `${poster.title} - Stream on 4K IPTV` : `${poster.title} - Regarder en streaming IPTV 4K`} 
                   style={{ 
                     width: '100%', 
                     height: '100%', 
