@@ -64,7 +64,7 @@ const Hero = () => {
           <div style={{ position: 'relative' }}>
             <img 
               src="https://4ksmartiptv.com/wp-content/uploads/2025/09/Abonnement-France-IPTV-768x768.png" 
-              alt="IPTV Showcase" 
+              alt="Abonnement IPTV 4K Premium France - Plus de 120 000 chaînes et VOD" 
               style={{ 
                 width: '120%', 
                 maxWidth: '850px', 

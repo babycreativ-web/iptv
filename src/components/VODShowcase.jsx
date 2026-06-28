@@ -48,7 +48,7 @@ const VODShowcase = () => {
               <div key={idx} className="vod-poster">
                 <img 
                   src={poster.url} 
-                  alt={poster.title} 
+                  alt={`${poster.title} - Regarder en streaming IPTV 4K`} 
                   style={{ 
                     width: '100%', 
                     height: '100%', 

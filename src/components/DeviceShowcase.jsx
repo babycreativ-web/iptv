@@ -58,7 +58,7 @@ const DeviceShowcase = () => {
           <div style={{ textAlign: 'center' }}>
             <img 
               src="https://firstiptv-4k.com/wp-content/uploads/2024/10/TVIP.webp" 
-              alt="TV Interface" 
+              alt="Abonnement IPTV Premium compatible Smart TV, Box Android, Firestick et Apple TV" 
               style={{ width: '100%', maxWidth: '750px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }} 
             />
           </div>
