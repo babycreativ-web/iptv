@@ -157,7 +157,7 @@ const Pricing = () => {
                     letterSpacing: '0',
                     color: isPop ? '#fff' : '#1e3a5f',
                   }}>
-                    Abonnement IPTV 4K – {plan.duration}
+                    {isEnglish ? '4K IPTV Subscription – ' : 'Abonnement IPTV 4K – '}{plan.duration}
                   </h3>
 
                   {/* Price */}
@@ -272,7 +272,9 @@ const Pricing = () => {
                     }}
                   >
                     <ShoppingCart size={16} />
-                    {isExternalCheckout ? 'Acheter Maintenant' : 'Acheter IPTV Maintenant'}
+                    {isEnglish 
+                      ? (isExternalCheckout ? 'Buy Now' : 'Buy IPTV Now')
+                      : (isExternalCheckout ? 'Acheter Maintenant' : 'Acheter IPTV Maintenant')}
                   </a>
                 </div>
               </div>
