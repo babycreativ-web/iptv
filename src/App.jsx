@@ -5,6 +5,7 @@ import DeviceShowcase from './components/DeviceShowcase';
 import FeaturesMarquee from './components/FeaturesMarquee';
 import VODShowcase from './components/VODShowcase';
 import Pricing from './components/Pricing';
+import Tutorial from './components/Tutorial';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
@@ -18,6 +19,7 @@ function App() {
       <FeaturesMarquee />
       <VODShowcase />
       <Pricing />
+      <Tutorial />
       <FAQ />
       <Footer />
       
