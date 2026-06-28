@@ -1,7 +1,6 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/en", "destination": "/index.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
   ]
 }
