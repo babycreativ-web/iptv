@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tv, Smartphone, Laptop, Monitor, HardDrive, HelpCircle } from 'lucide-react';
+import { Tv, Smartphone, Laptop, Monitor, HardDrive } from 'lucide-react';
 
 const Tutorial = () => {
   const [activeTab, setActiveTab] = useState('firestick');
@@ -13,11 +13,46 @@ const Tutorial = () => {
     { id: 'mag', name: 'Mag Box', icon: HardDrive }
   ];
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'firestick':
-        return (
-          <div>
+  return (
+    <section id="tutorial" style={styles.section}>
+      <div style={styles.container}>
+        <div style={styles.header}>
+          <h2 style={styles.title}>
+            GUIDES & <span style={{ color: 'var(--secondary)' }}>TUTORIELS</span> D'INSTALLATION
+          </h2>
+          <p style={styles.subtitle}>
+            Apprenez à installer et configurer facilement votre abonnement IPTV 4K sur n'importe quel appareil de votre choix.
+          </p>
+        </div>
+
+        {/* Tab Switcher Grid */}
+        <div style={styles.tabsGrid}>
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  ...styles.tabButton,
+                  backgroundColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.03)',
+                  borderColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.08)',
+                  boxShadow: isActive ? '0 8px 25px rgba(0, 102, 255, 0.4)' : 'none',
+                  color: isActive ? '#fff' : 'var(--text-gray)'
+                }}
+              >
+                <Icon size={20} style={{ color: isActive ? '#fff' : 'var(--primary)' }} />
+                <span>{tab.name}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* SEO-Optimized Content Panel (All tabs exist in DOM, hidden via display: none) */}
+        <div style={styles.contentPanel}>
+          {/* Fire TV Stick Guide */}
+          <div style={{ display: activeTab === 'firestick' ? 'block' : 'none' }}>
             <h3 style={styles.contentTitle}>Comment installer l'IPTV sur Amazon Fire TV Stick</h3>
             <p style={styles.introText}>
               Suivez ces étapes simples pour configurer votre abonnement IPTV sur votre clé Fire TV Stick.
@@ -62,10 +97,9 @@ const Tutorial = () => {
               </div>
             </div>
           </div>
-        );
-      case 'android':
-        return (
-          <div>
+
+          {/* Android Guide */}
+          <div style={{ display: activeTab === 'android' ? 'block' : 'none' }}>
             <h3 style={styles.contentTitle}>Comment configurer l'IPTV sur Android</h3>
             <p style={styles.introText}>
               Profitez de vos chaînes sur smartphone, tablette ou Box TV Android avec l'application officielle IPTV Smarters Pro.
@@ -100,10 +134,9 @@ const Tutorial = () => {
               </div>
             </div>
           </div>
-        );
-      case 'apple':
-        return (
-          <div>
+
+          {/* Apple / iOS Guide */}
+          <div style={{ display: activeTab === 'apple' ? 'block' : 'none' }}>
             <h3 style={styles.contentTitle}>Configuration IPTV sur Apple (iPhone, iPad, Apple TV)</h3>
             <p style={styles.introText}>
               Suivez ces étapes pour installer et activer votre abonnement IPTV sur vos appareils Apple / iOS.
@@ -138,10 +171,9 @@ const Tutorial = () => {
               </div>
             </div>
           </div>
-        );
-      case 'smarttv':
-        return (
-          <div>
+
+          {/* Smart TV Guide */}
+          <div style={{ display: activeTab === 'smarttv' ? 'block' : 'none' }}>
             <h3 style={styles.contentTitle}>Installation IPTV sur Smart TV (Samsung, LG)</h3>
             <p style={styles.introText}>
               Découvrez comment activer et configurer directement notre abonnement IPTV sur l'OS de votre Smart TV sans boîtier externe.
@@ -176,10 +208,9 @@ const Tutorial = () => {
               </div>
             </div>
           </div>
-        );
-      case 'windows':
-        return (
-          <div>
+
+          {/* Windows / Mac Guide */}
+          <div style={{ display: activeTab === 'windows' ? 'block' : 'none' }}>
             <h3 style={styles.contentTitle}>Configuration IPTV sur Ordinateur (Windows / MAC)</h3>
             <p style={styles.introText}>
               Suivez ces instructions simples pour regarder notre service de télévision directement sur l'écran de votre ordinateur.
@@ -211,10 +242,9 @@ const Tutorial = () => {
               </div>
             </div>
           </div>
-        );
-      case 'mag':
-        return (
-          <div>
+
+          {/* Mag Box Guide */}
+          <div style={{ display: activeTab === 'mag' ? 'block' : 'none' }}>
             <h3 style={styles.contentTitle}>Comment configurer l'IPTV sur boîtiers MAG</h3>
             <p style={styles.introText}>
               Ce tutoriel vous guide à travers les étapes de configuration pour tous les appareils de la gamme MAG (250, 254, 256, etc.).
@@ -258,51 +288,6 @@ const Tutorial = () => {
               </div>
             </div>
           </div>
-        );
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <section id="tutorial" style={styles.section}>
-      <div style={styles.container}>
-        <div style={styles.header}>
-          <h2 style={styles.title}>
-            GUIDES & <span style={{ color: 'var(--secondary)' }}>TUTORIELS</span> D'INSTALLATION
-          </h2>
-          <p style={styles.subtitle}>
-            Apprenez à installer et configurer facilement votre abonnement IPTV 4K sur n'importe quel appareil de votre choix.
-          </p>
-        </div>
-
-        {/* Tab Switcher Grid */}
-        <div style={styles.tabsGrid}>
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                style={{
-                  ...styles.tabButton,
-                  backgroundColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.03)',
-                  borderColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.08)',
-                  boxShadow: isActive ? '0 8px 25px rgba(0, 102, 255, 0.4)' : 'none',
-                  color: isActive ? '#fff' : 'var(--text-gray)'
-                }}
-              >
-                <Icon size={20} style={{ color: isActive ? '#fff' : 'var(--primary)' }} />
-                <span>{tab.name}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Dynamic Content Panel */}
-        <div style={styles.contentPanel}>
-          {renderContent()}
         </div>
       </div>
     </section>
