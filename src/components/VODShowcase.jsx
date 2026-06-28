@@ -1,6 +1,13 @@
 
 const VODShowcase = () => {
   const isEnglish = window.location.pathname.startsWith('/en');
+  const isSpanish = window.location.pathname.startsWith('/es');
+
+  const getVODText = (en, es, fr) => {
+    if (isEnglish) return en;
+    if (isSpanish) return es;
+    return fr;
+  };
 
   const posters = [
     { title: "Avengers: Doomsday", url: "https://image.tmdb.org/t/p/original/s2Fkuq0tj7mjAHEdbfQkFkdbeRI.jpg" },
@@ -18,10 +25,14 @@ const VODShowcase = () => {
     <section style={{ padding: '100px 0', background: 'var(--bg-dark)', overflow: 'hidden' }}>
       <div className="container" style={{ textAlign: 'center', marginBottom: '60px' }}>
         <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '15px' }}>
-          {isEnglish ? 'LATEST MOVIES & TV SHOWS 2026' : 'DERNIERS FILMS & SÉRIES 2026'}
+          {getVODText('LATEST MOVIES & TV SHOWS 2026', 'ÚLTIMAS PELÍCULAS Y SERIES 2026', 'DERNIERS FILMS & SÉRIES 2026')}
         </h2>
         <p style={{ color: 'var(--text-gray)', fontSize: '1.2rem' }}>
-          {isEnglish ? 'Enjoy an unlimited video-on-demand library updated daily.' : "Profitez d'une bibliothèque illimitée avec des sorties quotidiennes."}
+          {getVODText(
+            'Enjoy an unlimited video-on-demand library updated daily.',
+            'Disfrute de una biblioteca de video bajo demanda ilimitada y actualizada diariamente.',
+            "Profitez d'une bibliothèque illimitée avec des sorties quotidiennes."
+          )}
         </p>
       </div>
 
@@ -52,7 +63,11 @@ const VODShowcase = () => {
               <div key={idx} className="vod-poster">
                 <img 
                   src={poster.url} 
-                  alt={isEnglish ? `${poster.title} - Stream on 4K IPTV` : `${poster.title} - Regarder en streaming IPTV 4K`} 
+                  alt={getVODText(
+                    `${poster.title} - Stream on 4K IPTV`,
+                    `${poster.title} - Ver en streaming IPTV 4K`,
+                    `${poster.title} - Regarder en streaming IPTV 4K`
+                  )} 
                   style={{ 
                     width: '100%', 
                     height: '100%', 

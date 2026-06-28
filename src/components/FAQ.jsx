@@ -4,6 +4,13 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 const FAQ = () => {
   const [openIdx, setOpenIdx] = useState(null);
   const isEnglish = window.location.pathname.startsWith('/en');
+  const isSpanish = window.location.pathname.startsWith('/es');
+
+  const getFAQText = (en, es, fr) => {
+    if (isEnglish) return en;
+    if (isSpanish) return es;
+    return fr;
+  };
 
   const faqs = isEnglish ? [
     {
@@ -29,6 +36,31 @@ const FAQ = () => {
     {
       q: "How can I pay for my subscription?",
       a: "We offer secure and encrypted payment gateways. You can pay securely with credit card (Visa, Mastercard), or use PayPal or Payoneer by contacting our WhatsApp support team directly."
+    }
+  ] : isSpanish ? [
+    {
+      q: "¿Qué es IPTV y cómo funciona?",
+      a: "IPTV (Televisión por Protocolo de Internet) transmite canales de televisión en vivo y video bajo demanda (VOD) directamente a su pantalla a través de su conexión a Internet, eliminando la necesidad de antenas parabólicas o cables tradicionales. Todo lo que necesita es una conexión a Internet para comenzar a ver."
+    },
+    {
+      q: "¿Qué dispositivos son compatibles con su suscripción?",
+      a: "Nuestro servicio es compatible con todos los dispositivos: Smart TV (Samsung, LG, Sony, Philips), decodificadores Android TV (Xiaomi Mi Box, Nvidia Shield), Apple TV, Firestick, teléfonos inteligentes/tabletas (iOS, Android), computadoras (Windows, macOS) y aplicaciones como IPTV Smarters Pro, IBO Player o XCIPTV."
+    },
+    {
+      q: "¿Qué velocidad de Internet se recomienda?",
+      a: "Para ver canales en HD sin buffering, se aconseja una velocidad estable de 12 Mbps. Para disfrutar de contenido Full HD y 4K UHD, recomendamos una velocidad de conexión de 25 Mbps o superior (Fibra o 5G)."
+    },
+    {
+      q: "¿Cómo funciona la activación tras la compra?",
+      a: "La activación de su suscripción es ultrarrápida. Una vez validado el pago, nuestro equipo técnico configura su cuenta en 15 a 30 minutos y le envía las credenciales de acceso (enlace M3U, códigos Xtream API) y una guía de instalación a través de WhatsApp o correo electrónico."
+    },
+    {
+      q: "¿Ofrecen reembolso si no estoy satisfecho?",
+      a: "Sí, ofrecemos garantía de satisfacción. Si experimenta algún problema técnico persistente o cambia de opinión dentro de los primeros 7 días, le reembolsaremos su compra por completo sin preguntas."
+    },
+    {
+      q: "¿Cómo puedo pagar mi suscripción?",
+      a: "Ofrecemos pasarelas de pago seguras y encriptadas. Puede pagar de forma segura con tarjeta de crédito (Visa, Mastercard), o utilizar PayPal o Payoneer contactando directamente a nuestro equipo de soporte de WhatsApp."
     }
   ] : [
     {
@@ -69,20 +101,18 @@ const FAQ = () => {
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', marginBottom: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
             <HelpCircle size={32} color="var(--primary)" />
-            {isEnglish ? (
-              <>
-                FREQUENTLY <span style={{ color: 'var(--secondary)' }}>ASKED</span> QUESTIONS
-              </>
-            ) : (
-              <>
-                QUESTIONS <span style={{ color: 'var(--secondary)' }}>FRÉQUENTES</span>
-              </>
+            {getFAQText(
+              <>FREQUENTLY <span style={{ color: 'var(--secondary)' }}>ASKED</span> QUESTIONS</>,
+              <>PREGUNTAS <span style={{ color: 'var(--secondary)' }}>FRECUENTES</span></>,
+              <>QUESTIONS <span style={{ color: 'var(--secondary)' }}>FRÉQUENTES</span></>
             )}
           </h2>
           <p style={{ color: 'var(--text-gray)', fontSize: '16px' }}>
-            {isEnglish 
-              ? "Everything you need to know about our 4K IPTV subscription and activation."
-              : "Tout ce que vous devez savoir sur notre abonnement IPTV 4K et son activation."}
+            {getFAQText(
+              "Everything you need to know about our 4K IPTV subscription and activation.",
+              "Todo lo que necesita saber sobre nuestra suscripción IPTV 4K y su activación.",
+              "Tout ce que vous devez savoir sur notre abonnement IPTV 4K et son activation."
+            )}
           </p>
         </div>
 

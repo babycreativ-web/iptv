@@ -2,29 +2,42 @@ import { Tv, Crown, MonitorSmartphone } from 'lucide-react';
 
 const Features = () => {
   const isEnglish = window.location.pathname.startsWith('/en');
+  const isSpanish = window.location.pathname.startsWith('/es');
+
+  const getFeatureText = (en, es, fr) => {
+    if (isEnglish) return en;
+    if (isSpanish) return es;
+    return fr;
+  };
 
   const cards = [
     {
-      title: isEnglish ? "4K Premium IPTV" : "4K France IPTV",
-      desc: isEnglish 
-        ? "Our high-performance server network ensures maximum streaming quality for all your channels."
-        : "Notre réseau de serveurs performants assure une meilleure qualité de diffusion de vos contenus.",
+      title: getFeatureText("4K Premium IPTV", "4K España IPTV", "4K France IPTV"),
+      desc: getFeatureText(
+        "Our high-performance server network ensures maximum streaming quality for all your channels.",
+        "Nuestra red de servidores de alto rendimiento garantiza la mejor calidad de transmisión para su contenido.",
+        "Notre réseau de serveurs performants assure une meilleure qualité de diffusion de vos contenus."
+      ),
       Icon: Tv,
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     },
     {
-      title: isEnglish ? "Best 4K IPTV Sub" : "Meilleur Abonnement 4K France IPTV",
-      desc: isEnglish 
-        ? "IPTV Smarters subscription, the most complete and stable premium plan on the market!"
-        : "Abonnement IPTV Smarters, l'abonnement agence IPTV le plus complet !",
+      title: getFeatureText("Best 4K IPTV Sub", "Mejor Suscripción IPTV 4K", "Meilleur Abonnement 4K France IPTV"),
+      desc: getFeatureText(
+        "IPTV Smarters subscription, the most complete and stable premium plan on the market!",
+        "¡Suscripción IPTV Smarters, el plan de agencia IPTV más completo y estable del mercado!",
+        "Abonnement IPTV Smarters, l'abonnement agence IPTV le plus complet !"
+      ),
       Icon: Crown,
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
     },
     {
-      title: isEnglish ? "All Devices Compatible" : "Compatible Tous Appareils",
-      desc: isEnglish 
-        ? "Our service works seamlessly on all devices: Smart TV, Android, iOS, Firestick, and MAG."
-        : "Notre service est compatible avec tous les appareils : Smart TV, Android, iOS, MAG, et plus encore.",
+      title: getFeatureText("All Devices Compatible", "Compatible Todos Dispositivos", "Compatible Tous Appareils"),
+      desc: getFeatureText(
+        "Our service works seamlessly on all devices: Smart TV, Android, iOS, Firestick, and MAG.",
+        "Nuestro servicio es compatible con todos los dispositivos: Smart TV, Android, iOS, MAG y más.",
+        "Notre service est compatible avec tous les appareils : Smart TV, Android, iOS, MAG, et plus encore."
+      ),
       Icon: MonitorSmartphone,
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
     }

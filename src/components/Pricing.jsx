@@ -2,37 +2,44 @@ import { Check, ShoppingCart } from 'lucide-react';
 
 const Pricing = () => {
   const isEnglish = window.location.pathname.startsWith('/en');
+  const isSpanish = window.location.pathname.startsWith('/es');
+
+  const getPricingText = (en, es, fr) => {
+    if (isEnglish) return en;
+    if (isSpanish) return es;
+    return fr;
+  };
 
   const plans = [
     { 
-      duration: isEnglish ? '1 Month' : '1 Mois', 
+      duration: getPricingText('1 Month', '1 Mes', '1 Mois'), 
       price: '9.99', 
-      period: isEnglish ? '/month' : '/mois', 
-      tagline: isEnglish ? "Test our 4K IPTV service" : "Tester l'abonnement IPTV 4K", 
+      period: getPricingText('/month', '/mes', '/mois'), 
+      tagline: getPricingText("Test our 4K IPTV service", "Pruebe nuestro servicio IPTV 4K", "Tester l'abonnement IPTV 4K"), 
       popular: false,
       checkoutUrl: ''
     },
     { 
-      duration: isEnglish ? '3 Months' : '3 Mois', 
+      duration: getPricingText('3 Months', '3 Meses', '3 Mois'), 
       price: '29.99', 
-      period: isEnglish ? '/3 months' : '/3 mois', 
-      tagline: isEnglish ? "Excellent 4K IPTV plan" : "Excellent abonnement IPTV 4K", 
+      period: getPricingText('/3 months', '/3 meses', '/3 mois'), 
+      tagline: getPricingText("Excellent 4K IPTV plan", "Excelente plan IPTV 4K", "Excellent abonnement IPTV 4K"), 
       popular: false,
       checkoutUrl: ''
     },
     { 
-      duration: isEnglish ? '6 Months' : '6 Mois', 
+      duration: getPricingText('6 Months', '6 Meses', '6 Mois'), 
       price: '39.99', 
-      period: isEnglish ? '/6 months' : '/6 mois', 
-      tagline: isEnglish ? "Best value 4K IPTV plan" : "Meilleur abonnement IPTV 4K", 
+      period: getPricingText('/6 months', '/6 meses', '/6 mois'), 
+      tagline: getPricingText("Best value 4K IPTV plan", "El plan IPTV 4K de mejor valor", "Meilleur abonnement IPTV 4K"), 
       popular: true,
       checkoutUrl: ''
     },
     { 
-      duration: isEnglish ? '12 Months' : '12 Mois', 
+      duration: getPricingText('12 Months', '12 Meses', '12 Mois'), 
       price: '59', 
-      period: isEnglish ? '/12 months' : '/12 mois', 
-      tagline: isEnglish ? "Premium annual 4K IPTV plan" : "Offre IPTV 4K Premium annuelle", 
+      period: getPricingText('/12 months', '/12 meses', '/12 mois'), 
+      tagline: getPricingText("Premium annual 4K IPTV plan", "Plan anual premium IPTV 4K", "Offre IPTV 4K Premium annuelle"), 
       popular: false,
       checkoutUrl: ''
     },
@@ -44,6 +51,12 @@ const Pricing = () => {
     "HD / Full HD / 4K Video Quality",
     "Works on Smart TV, Android, iOS",
     "24/7 WhatsApp IPTV Support",
+  ] : isSpanish ? [
+    "20.000+ canales internacionales",
+    "50.000+ películas y series VOD",
+    "Calidad de video HD / Full HD / 4K",
+    "Funciona en Smart TV, Android, iOS",
+    "Soporte IPTV 24/7 WhatsApp",
   ] : [
     "20 000+ chaînes internationales",
     "50 000+ films & séries VOD",
@@ -57,18 +70,18 @@ const Pricing = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '900', marginBottom: '15px' }}>
-            {isEnglish ? (
-              <>
-                OUR SUBSCRIPTION <span style={{ color: 'var(--secondary)' }}>PLANS</span>
-              </>
-            ) : (
-              <>
-                NOS <span style={{ color: 'var(--secondary)' }}>OFFRES</span> D'ABONNEMENT
-              </>
+            {getPricingText(
+              <>OUR SUBSCRIPTION <span style={{ color: 'var(--secondary)' }}>PLANS</span></>,
+              <>NUESTROS <span style={{ color: 'var(--secondary)' }}>PLANES</span> DE SUSCRIPCIÓN</>,
+              <>NOS <span style={{ color: 'var(--secondary)' }}>OFFRES</span> D'ABONNEMENT</>
             )}
           </h2>
           <p style={{ color: 'var(--text-gray)', fontSize: '16px', maxWidth: '600px', margin: '0 auto' }}>
-            {isEnglish ? "Choose the plan that suits you best" : "Choisissez l'abonnement qui vous convient le mieux"}
+            {getPricingText(
+              "Choose the plan that suits you best",
+              "Elija el plan que mejor se adapte a sus necesidades",
+              "Choisissez l'abonnement qui vous convient le mieux"
+            )}
           </p>
         </div>
 
@@ -84,6 +97,8 @@ const Pricing = () => {
             // Calculer l'URL du bouton : si un checkoutUrl est défini, on l'utilise, sinon on va sur WhatsApp
             const defaultMessage = isEnglish
               ? `Hello, I want to purchase the 4K IPTV subscription for ${plan.duration} at ${plan.price}€.`
+              : isSpanish
+              ? `Hola, deseo comprar la suscripción IPTV 4K por una duración de ${plan.duration} a ${plan.price}€.`
               : `Bonjour, je souhaite acheter l'abonnement IPTV 4K pour une durée de ${plan.duration} à ${plan.price}€.`;
             const buttonHref = plan.checkoutUrl || `https://wa.me/212688407392?text=${encodeURIComponent(defaultMessage)}`;
             const isExternalCheckout = !!plan.checkoutUrl;
@@ -132,7 +147,7 @@ const Pricing = () => {
                       letterSpacing: '0.5px',
                       boxShadow: '0 2px 8px rgba(229, 62, 62, 0.4)',
                     }}>
-                      {isEnglish ? 'POPULAR' : 'POPULAIRE'}
+                      {getPricingText('POPULAR', 'POPULAR', 'POPULAIRE')}
                     </div>
                   </div>
                 )}
@@ -157,7 +172,7 @@ const Pricing = () => {
                     letterSpacing: '0',
                     color: isPop ? '#fff' : '#1e3a5f',
                   }}>
-                    {isEnglish ? '4K IPTV Subscription – ' : 'Abonnement IPTV 4K – '}{plan.duration}
+                    {getPricingText('4K IPTV Subscription – ', 'Suscripción IPTV 4K – ', 'Abonnement IPTV 4K – ')}{plan.duration}
                   </h3>
 
                   {/* Price */}
@@ -272,9 +287,11 @@ const Pricing = () => {
                     }}
                   >
                     <ShoppingCart size={16} />
-                    {isEnglish 
-                      ? (isExternalCheckout ? 'Buy Now' : 'Buy IPTV Now')
-                      : (isExternalCheckout ? 'Acheter Maintenant' : 'Acheter IPTV Maintenant')}
+                    {getPricingText(
+                      isExternalCheckout ? 'Buy Now' : 'Buy IPTV Now',
+                      isExternalCheckout ? 'Comprar Ahora' : 'Comprar IPTV Ahora',
+                      isExternalCheckout ? 'Acheter Maintenant' : 'Acheter IPTV Maintenant'
+                    )}
                   </a>
                 </div>
               </div>

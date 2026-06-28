@@ -13,6 +13,13 @@ const Navbar = () => {
   }, []);
 
   const isEnglish = window.location.pathname.startsWith('/en');
+  const isSpanish = window.location.pathname.startsWith('/es');
+
+  const getLinkText = (en, es, fr) => {
+    if (isEnglish) return en;
+    if (isSpanish) return es;
+    return fr;
+  };
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -22,15 +29,15 @@ const Navbar = () => {
         <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
           {/* Desktop Links */}
           <div className="nav-links-desktop">
-            <a href="#">{isEnglish ? 'HOME' : 'ACCUEIL'}</a>
-            <a href="#pricing">{isEnglish ? 'OUR PLANS' : 'NOS ABONNEMENTS'}</a>
-            <a href="#tutorial">{isEnglish ? 'TUTORIAL' : 'TUTORIEL'}</a>
+            <a href="#">{getLinkText('HOME', 'INICIO', 'ACCUEIL')}</a>
+            <a href="#pricing">{getLinkText('OUR PLANS', 'NUESTROS PLANES', 'NOS ABONNEMENTS')}</a>
+            <a href="#tutorial">{getLinkText('TUTORIAL', 'TUTORIAL', 'TUTORIEL')}</a>
             <a href="#faq">FAQ</a>
             <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer">CONTACT</a>
           </div>
 
           <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer" className="btn-primary nav-cta" style={{ padding: '12px 25px', fontSize: '12px' }}>
-            {isEnglish ? 'ORDER NOW' : 'COMMANDER'} <ArrowRight size={16} />
+            {getLinkText('ORDER NOW', 'COMPRAR AHORA', 'COMMANDER')} <ArrowRight size={16} />
           </a>
 
           {/* Hamburger Icon */}
@@ -46,9 +53,9 @@ const Navbar = () => {
 
       {/* Mobile Drawer Links */}
       <div className={`nav-links-mobile ${menuOpen ? 'open' : ''}`}>
-        <a href="#" onClick={() => setMenuOpen(false)}>{isEnglish ? 'HOME' : 'ACCUEIL'}</a>
-        <a href="#pricing" onClick={() => setMenuOpen(false)}>{isEnglish ? 'OUR PLANS' : 'NOS ABONNEMENTS'}</a>
-        <a href="#tutorial" onClick={() => setMenuOpen(false)}>{isEnglish ? 'TUTORIAL' : 'TUTORIEL'}</a>
+        <a href="#" onClick={() => setMenuOpen(false)}>{getLinkText('HOME', 'INICIO', 'ACCUEIL')}</a>
+        <a href="#pricing" onClick={() => setMenuOpen(false)}>{getLinkText('OUR PLANS', 'NUESTROS PLANES', 'NOS ABONNEMENTS')}</a>
+        <a href="#tutorial" onClick={() => setMenuOpen(false)}>{getLinkText('TUTORIAL', 'TUTORIAL', 'TUTORIEL')}</a>
         <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
         <a href="https://wa.me/212688407392" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>CONTACT</a>
       </div>
